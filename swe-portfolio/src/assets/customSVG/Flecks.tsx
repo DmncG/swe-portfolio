@@ -1,5 +1,5 @@
 // Paint flicked from a brush — long thin streaks at random angles with tail dots
-function Flecks({ color, className, opacity = 0.5 }: { color: string; className?: string; opacity?: number }) {
+export default function Flecks({ color, className, opacity = 0.5 }: { color: string; className?: string; opacity?: number }) {
   return (
     <svg viewBox="0 0 340 280" className={className} aria-hidden="true">
       <defs>

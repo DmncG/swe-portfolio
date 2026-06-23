@@ -1,5 +1,5 @@
 // Angled brush stroke — short and gestural
-function BrushStrokeShort({ color, className, opacity = 0.5 }: { color: string; className?: string; opacity?: number }) {
+export default function BrushStrokeShort({ color, className, opacity = 0.5 }: { color: string; className?: string; opacity?: number }) {
   return (
     <svg viewBox="0 0 200 180" className={className} aria-hidden="true">
       <defs>
