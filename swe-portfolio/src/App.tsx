@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 
-import { Hero } from "./pages/HeroSection";
-import { About } from "./pages/AboutSection";
-import { Projects } from "./pages/ProjectsSection";
-import { Skills } from "./pages/SkillsSection";
+import { Hero } from "./sections/HeroSection";
+import { About } from "./sections/AboutSection";
+import { Projects } from "./sections/ProjectsSection";
+import { Skills } from "./sections/SkillsSection";
 
 import { NavDots } from './components/NavDots';
 import { TopNav } from './components/TopNav';
@@ -61,7 +61,7 @@ function App() {
       {/* Footer */}
       <footer className="py-8 text-center border-t" style={{ borderColor: "rgba(120,80,40,0.1)" }}>
         <p className="text-xs text-muted-foreground" style={{ fontFamily: "'DM Mono', monospace" }}>
-          © 2026 Alex Mercer — Designed & Built with care
+          © 2026 Dominic Garcia — Designed & Built with care
         </p>
       </footer>
     </div>
