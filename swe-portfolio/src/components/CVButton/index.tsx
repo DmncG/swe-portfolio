@@ -1,5 +1,3 @@
-import React from "react";
-
 export const CVButton = () => {
     return (
         <a
