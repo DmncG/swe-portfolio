@@ -1,0 +1,26 @@
+
+import { type Project } from "../../sections/ProjectsSection/projectList";
+
+export const ProjectCard = ({ project }: { project: Project }) => {
+    return (
+      <div className="group relative rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl overflow-hidden"
+        style={{ background: "rgba(254,249,243,0.85)", borderColor: "rgba(120,80,40,0.12)", backdropFilter: "blur(4px)" }}>
+        <div className="flex items-start justify-between mb-3">
+          <span className="text-xs text-muted-foreground" style={{ fontFamily: "'DM Mono', monospace" }}>{project.year}</span>
+          <a href={project.link} className="text-muted-foreground hover:text-primary transition-colors">
+            {/* {<ExternalLink size={15} />} */}
+          </a>
+        </div>
+        <h3 className="text-xl font-semibold text-foreground mb-2" style={{ fontFamily: "'Lora', serif" }}>{project.name}</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>{project.description}</p>
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map(t => (
+            <span key={t} className="text-xs px-2.5 py-1 rounded-full font-medium"
+              style={{ background: "rgba(201,109,58,0.1)", color: "#c96d3a", fontFamily: "'DM Mono', monospace" }}>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    );
+  }
