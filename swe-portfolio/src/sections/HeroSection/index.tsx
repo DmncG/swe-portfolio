@@ -1,4 +1,6 @@
+
 export const Hero = () => {
+
     return (
         <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
       {/* // Paint blobs, strokes & flecks
@@ -22,12 +24,12 @@ export const Hero = () => {
           style={{ fontFamily: "'Nunito', sans-serif" }}>
           Crafting experiences where user-centered code meets elegant design. Grounded in collaboration, communication, and simplicity.
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-32">
-          <button className="px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground transition-all duration-200 hover:scale-105"
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+          <button className="px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground transition-all duration-200 hover:scale-105 cursor-pointer"
             style={{ background: "linear-gradient(135deg, #c96d3a, #e8956d)", fontFamily: "'Nunito', sans-serif" }}>
             View My Work
           </button>
-          <button className="px-6 py-3 rounded-full text-sm font-semibold border transition-all duration-200 hover:bg-muted"
+          <button className="px-6 py-3 rounded-full text-sm font-semibold border transition-all duration-200 hover:bg-muted cursor-pointer"
             style={{ borderColor: "rgba(120,80,40,0.25)", fontFamily: "'Nunito', sans-serif", color: "#3b2b1a" }}>
             Get in Touch
           </button>

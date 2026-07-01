@@ -15,13 +15,13 @@ export const TopNav = ({ sections, active, onNav }: TopNavProps) => {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-4"
         style={{ background: "rgba(253,246,236,0.82)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(120,80,40,0.1)" }}>
         <span className="font-serif text-xl font-semibold text-foreground tracking-wide" style={{ fontFamily: "'Lora', serif" }}>
-          <img className="w-18" src={domLogo} />
+          <img className="w-16" src={domLogo} />
         </span>
         {/* Desktop */}
         <div className="hidden md:flex gap-8">
           {sections.map((s, i) => (
             <button key={s} onClick={() => onNav(i)}
-              className={`text-sm font-medium tracking-wide transition-colors duration-200 ${active === i ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+              className={`text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer ${active === i ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
               style={{ fontFamily: "'Nunito', sans-serif" }}>
               {s}
             </button>

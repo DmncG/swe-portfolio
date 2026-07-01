@@ -13,7 +13,7 @@ export const NavDots = ({ active, sections, onNav }: NavDotsProps) => {{
                 key={s}
                 onClick={() => onNav(i)}
                 aria-label={`Go to ${s}`}
-                className={`w-2.5 h-2.5 rounded-full border transition-all duration-300 ${
+                className={`w-2.5 h-2.5 rounded-full border transition-all duration-300 cursor-pointer ${
                   active === i
                     ? "bg-primary border-primary scale-125"
                     : "bg-transparent border-muted-foreground hover:border-primary"
