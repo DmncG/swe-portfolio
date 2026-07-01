@@ -8,11 +8,11 @@ import { ProjectCard } from "../../components/ProjectCard";
 export const Projects = () => {
    const workHistoryRef = useRef(null);
    const experienceRef = useRef(null);
-   const whInView = useInView(workHistoryRef, {margin: "-60%", once: true })
-   const expInView = useInView(experienceRef, {margin: "-20%", once: true })
+   const whInView = useInView(workHistoryRef, {margin: "-50%", once: true })
+   const expInView = useInView(experienceRef, {margin: "-40%", once: true })
 
 const sentence = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1, 
     transition: {
@@ -31,7 +31,7 @@ const letter = {
 }
 
    return (
-      <section className="relative min-h-screen py-28 px-6 overflow-hidden">
+      <section className="relative min-h-screen pt-28 px-6 overflow-hidden">
         <div className="relative z-10 max-w-6xl mx-auto">
           <div className="mb-16">
             <motion.p
