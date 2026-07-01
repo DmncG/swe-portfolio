@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 
 import { projectList } from "./projectList";
@@ -108,27 +108,27 @@ const letter = {
                     <motion.div 
                       className="w-3 h-3 rounded-full mt-1.5 shrink-0 transition-colors duration-200 group-hover:bg-primary"
                       style={{ background: "#c96d3a", opacity: 0.7 }}
-                      animate={expInView ? { opacity: 1, transition: { delay: i + 0.5} } : { opacity: 0 }}
+                      animate={expInView ? { opacity: 1, transition: { delay: i + 0.25} } : { opacity: 0 }}
                     />
                     {i < experienceList.length - 1 && (
                       <motion.div 
                         className="w-px flex-1 my-2"
                         style={{ background: "rgba(120,80,40,0.2)" }}
-                        animate={expInView ? { scaleY: 1, originY: "top", transition: { duration: 1, delay: i + 0.5 }, opacity: 1 } : { scaleY: 0, originY: "top", opacity: 0 }}
+                        animate={expInView ? { scaleY: 1, originY: "top", transition: { duration: 1, delay: i + 0.25 }, opacity: 1 } : { scaleY: 0, originY: "top", opacity: 0 }}
                       />
                     )}
                   </div>
                   <div className={`pb-10 ${i === experienceList.length - 1 ? "pb-0" : ""}`}>
-                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
-                      <motion.h4 
+                    <motion.div animate={ expInView ? { opacity: 1, transition: { delay: i + 0.5 }} : { opacity: 0 }} className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+                      <h4 
                         className="text-lg font-semibold text-foreground"
                         style={{ fontFamily: "'Lora', serif" }}
                       >
                       {e.role}
-                      </motion.h4>
+                      </h4>
                       <span className="text-sm text-primary font-medium" style={{ fontFamily: "'Nunito', sans-serif" }}>{e.company}</span>
                       <span className="text-xs text-muted-foreground ml-auto" style={{ fontFamily: "'DM Mono', monospace" }}>{e.period}</span>
-                    </div>
+                    </motion.div>
                     <motion.p 
                       className="text-sm text-muted-foreground leading-relaxed" 
                       style={{ fontFamily: "'Nunito', sans-serif" }}
