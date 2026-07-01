@@ -10,7 +10,7 @@ export const About = () => {
   
         <div className="relative z-10 max-w-5xl mx-auto">
           <div className="mb-16">
-            <p className="text-xs tracking-[0.3em] uppercase text-primary mb-3" style={{ fontFamily: "'DM Mono', monospace" }}>The person behind the work</p>
+            <p className="text-xs tracking-[0.3em] uppercase text-primary mb-3" style={{ fontFamily: "'DM Mono', monospace" }}>The human behind the screen</p>
             <h2 className="text-5xl md:text-6xl font-bold text-foreground" style={{ fontFamily: "'Lora', serif" }}>
               About <em>Me</em>
             </h2>
