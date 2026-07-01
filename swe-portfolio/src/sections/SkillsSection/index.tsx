@@ -3,10 +3,6 @@ import { skillList } from "./skillList";
 export const Skills = () => {
     return (
       <section className="relative min-h-screen py-28 px-6 overflow-hidden">
-        {/* <BrushStrokeShort color="#78b4c8" className="absolute -top-8 left-1/3 w-72 h-72 pointer-events-none" opacity={0.45} />
-        <PaintBlob color="#f4c14f" className="absolute -bottom-8 -right-12 w-80 h-80 pointer-events-none" opacity={0.55} />
-        <Flecks color="#e8956d" className="absolute bottom-1/3 left-6 w-60 pointer-events-none" opacity={0.3} /> */}
-  
         <div className="relative z-10 max-w-5xl mx-auto">
           <div className="mb-16">
             <p className="text-xs tracking-[0.3em] uppercase text-primary mb-3" style={{ fontFamily: "'DM Mono', monospace" }}>What I work with</p>
