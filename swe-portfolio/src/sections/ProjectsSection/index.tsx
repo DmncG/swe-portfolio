@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 import { projectList } from "./projectList";
 import { experienceList } from "./experienceList";
 import { ProjectCard } from "../../components/ProjectCard";
@@ -11,16 +13,59 @@ export const Projects = () => {
   
         <div className="relative z-10 max-w-6xl mx-auto">
           <div className="mb-16">
-            <p className="text-xs tracking-[0.3em] uppercase text-primary mb-3" style={{ fontFamily: "'DM Mono', monospace" }}>Selected work</p>
-            <h2 className="text-5xl md:text-6xl font-bold text-foreground" style={{ fontFamily: "'Lora', serif" }}>
-              Projects &<br /><em>Experience</em>
-            </h2>
+            <motion.p
+              className="text-xs tracking-[0.3em] uppercase text-primary mb-3" 
+              style={{ fontFamily: "'DM Mono', monospace" }}
+              initial={{
+                opacity: 0,
+                x: -300,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 1,
+                }
+              }}
+              viewport={{ once: true, amount: 0.7}}
+            >
+              Selected work
+            </motion.p>
+            <motion.h2 
+              className="text-5xl md:text-6xl font-bold text-foreground" 
+              style={{ fontFamily: "'Lora', serif" }}
+              initial={{
+                opacity: 0,
+                x: 300,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 1,
+                }
+              }}
+              viewport={{ once: true, amount: 0.7}}
+            >
+              Projects & Experience
+            </motion.h2>
           </div>
   
           {/* Projects grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20"
+            initial={{ scale: 0.8, opacity: 0}}
+            whileInView={{
+              scale: 1, 
+              opacity: 1,
+              transition: {
+                duration: 0.7,
+              }
+            }}
+            viewport={{ once: true, amount: 0.9 }}
+          >
             {projectList.map(p => <ProjectCard key={p.name} project={p} />)}
-          </div>
+          </motion.div>
   
           {/* Experience timeline */}
           <div>
