@@ -5,11 +5,12 @@ import { projectList } from "./projectList";
 import { experienceList } from "./experienceList";
 import { ProjectCard } from "../../components/ProjectCard";
 
-export const Projects = () => {
+export const Projects = (isBottom: boolean) => {
    const workHistoryRef = useRef(null);
    const experienceRef = useRef(null);
    const whInView = useInView(workHistoryRef, {margin: "-50%", once: true })
    const expInView = useInView(experienceRef, {margin: "-40%", once: true })
+   console.log("isBottom", isBottom)
 
 const sentence = {
   hidden: { opacity: 1 },
@@ -37,36 +38,35 @@ const letter = {
             <motion.p
               className="text-xs tracking-[0.3em] uppercase text-primary mb-3" 
               style={{ fontFamily: "'DM Mono', monospace" }}
-              initial={{
-                opacity: 0,
-                x: -300,
-              }}
-              whileInView={{
+              animate={ whInView || isBottom ? { 
                 opacity: 1,
                 x: 0,
                 transition: {
-                  duration: 1,
+                  duration: 1
+                }
+              } : {
+                opacity: 0,
+                x: -300,
+                transition: {
+                  duration: 1
                 }
               }}
-              viewport={{ once: true, amount: 0.5}}
             >
               Selected work
             </motion.p>
             <motion.h2 
               className="text-5xl md:text-6xl font-bold text-foreground" 
               style={{ fontFamily: "'Lora', serif" }}
-              initial={{
-                opacity: 0,
-                x: 300,
-              }}
-              whileInView={{
+              animate={ whInView || isBottom ? {
                 opacity: 1,
                 x: 0,
                 transition: {
-                  duration: 1,
+                  duration: 1
                 }
+              } : {
+                opacity: 0,
+                x: 300
               }}
-              viewport={{ once: true, amount: 0.5}}
             >
               Projects & Experience
             </motion.h2>

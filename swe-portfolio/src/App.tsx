@@ -10,10 +10,12 @@ import { TopNav } from './components/TopNav';
 import { CVButton } from './components/CVButton';
 
 import { cssClassNames } from './utils/cssUtils';
+import { usePageBottom } from "./utils/customHooks/usePageBottom.tsx";
 import './App.css'
 
 function App() {
   const [active, setActive] = useState(0);
+  const isBottom = usePageBottom();
 
   const sectionRefs = [
     useRef<HTMLDivElement>(null),
@@ -54,9 +56,9 @@ function App() {
       <CVButton />
 
       <div ref={sectionRefs[0]}><Hero /></div>
-      <div ref={sectionRefs[1]}><Projects /></div>
-      <div ref={sectionRefs[2]}><Skills /></div>
-      <div ref={sectionRefs[3]}><About /></div>
+      <div ref={sectionRefs[1]}><Projects isBottom={isBottom}/></div>
+      <div ref={sectionRefs[2]}><Skills isBottom={isBottom}/></div>
+      <div ref={sectionRefs[3]}><About isBottom={isBottom}/></div>
 
       {/* Footer */}
       <footer className="py-8 text-center border-t" style={{ borderColor: "rgba(120,80,40,0.1)" }}>
