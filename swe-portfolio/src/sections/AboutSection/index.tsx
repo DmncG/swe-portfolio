@@ -1,37 +1,94 @@
+import { useRef } from "react";
+import { motion, useInView } from "motion/react";
 import profilePhoto from "/profile.jpg";
 
 export const About = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.5 });
+
     return (
-      <section className="relative min-h-screen py-28 px-6 overflow-hidden">
-        {/* <PaintBlob color="#e8956d" className="absolute -top-10 -left-10 w-80 h-80 pointer-events-none" opacity={0.45} />
-        <BrushStroke color="#78b4c8" className="absolute bottom-16 -right-8 w-96 pointer-events-none" opacity={0.4} />
-        <BrushStrokeShort color="#f4c14f" className="absolute top-1/2 left-1/2 w-64 h-64 pointer-events-none -translate-x-1/2 -translate-y-1/2" opacity={0.3} />
-        <Flecks color="#f4c14f" className="absolute top-24 right-12 w-72 pointer-events-none" opacity={0.32} /> */}
-  
-        <div className="relative z-10 max-w-5xl mx-auto">
+      <section ref={sectionRef} className="relative min-h-screen py-28 px-6 overflow-hidden">
+        <div className="max-w-5xl mx-auto">
           <div className="mb-16">
-            <p className="text-xs tracking-[0.3em] uppercase text-primary mb-3" style={{ fontFamily: "'DM Mono', monospace" }}>The human behind the screen</p>
-            <h2 className="text-5xl md:text-6xl font-bold text-foreground" style={{ fontFamily: "'Lora', serif" }}>
+            <motion.p 
+              className="text-xs tracking-[0.3em] uppercase text-primary mb-3" 
+              style={{ fontFamily: "'DM Mono', monospace" }}
+              animate={ isInView ? { 
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 1
+                }
+              } : {
+                opacity: 0,
+                x: -300,
+                transition: {
+                  duration: 1
+                }
+              }}
+              >
+                The human behind the screen
+            </motion.p>
+            <motion.h2 
+              className="text-5xl md:text-6xl font-bold text-foreground" 
+              style={{ fontFamily: "'Lora', serif" }}
+              animate={ isInView ? { 
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 1
+                }
+              } : {
+                opacity: 0,
+                x: 300,
+                transition: {
+                  duration: 1
+                }
+              }}
+            >
               About <em>Me</em>
-            </h2>
+            </motion.h2>
           </div>
   
           <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start">
             {/* Photo placeholder */}
             <div className="md:col-span-2 flex flex-col items-center md:items-start gap-4">
-              <div className="relative w-56 h-56 md:w-full md:h-72">
-                {/* Watercolor ring behind photo */}
-                <div className="absolute -inset-4 rounded-[40%_60%_55%_45%/50%_40%_60%_50%] opacity-40"
-                  style={{ background: "radial-gradient(ellipse, #f4c14f 0%, transparent 70%)", filter: "blur(16px)" }} />
+              <motion.div 
+                className="relative w-56 h-56 md:w-full md:h-72"
+                animate={ isInView ? {
+                  scale: 1,
+                  opacity: 1,
+                  origin: "center",
+                  transition: {
+                    duration: 0.5
+                  }
+                } : {
+                  scale: 0,
+                  opacity: 0,
+                }}
+                initial={{scale: 0, opacity: 0}}
+              >
                 <img
                   src={profilePhoto}
                   alt="Dominic Garcia, Software Engineer"
                   className="relative z-10 w-full h-full object-cover rounded-[30%_70%_60%_40%/40%_50%_60%_50%]"
                   style={{ filter: "saturate(0.9)" }}
                 />
-              </div>
+              </motion.div>
   
-              <div className="space-y-2 text-sm" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              <motion.div 
+                className="space-y-2 text-sm" 
+                style={{ fontFamily: "'Nunito', sans-serif" }}
+                animate={ isInView ? {
+                  opacity: 1,
+                  transition: {
+                    delay: 0.5
+                  },
+                } : {
+                  opacity: 0
+                }}
+                initial={{ opacity: 0}}
+              >
                 <div className="flex items-center gap-2 text-muted-foreground">
                   {/* <MapPin size={14} className="text-primary shrink-0" /> */}
                   <span>Melbourne, Australia</span>
@@ -44,11 +101,23 @@ export const About = () => {
                   {/* <Github size={14} className="text-primary shrink-0" /> */}
                   <a href="#" className="hover:text-foreground transition-colors">github.com/dominic-garcia</a>
                 </div>
-              </div>
+              </motion.div>
             </div>
   
             {/* Bio text */}
-            <div className="md:col-span-3 space-y-5">
+            <motion.div 
+               className="md:col-span-3 space-y-5"
+               animate={ isInView ? {
+                opacity: 1,
+                transition: {
+                  delay: 0.75,
+                  duration: 1
+                }
+               } : {
+                opacity: 0
+               }}
+               initial={{opacity: 0}}
+            >
               <p className="text-xl text-foreground leading-relaxed"
                 style={{ fontFamily: "'Lora', serif" }}>
                 I am a full-stack engineer with 5+ years of experience building products that people actually enjoy using.
@@ -72,7 +141,7 @@ export const About = () => {
   
               {/* CTA row */}
               <div className="flex flex-wrap gap-4 pt-4">
-                <a href="mailto:alex@example.com"
+                <a href="mailto:micksdev@gmail.com"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-primary-foreground transition-all duration-200 hover:scale-105"
                   style={{ background: "linear-gradient(135deg, #c96d3a, #e8956d)", fontFamily: "'Nunito', sans-serif" }}>
                   {/* <Mail size={14} /> Say Hello */}
@@ -83,7 +152,7 @@ export const About = () => {
                   {/* <Github size={14} /> GitHub */}
                 </a>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
