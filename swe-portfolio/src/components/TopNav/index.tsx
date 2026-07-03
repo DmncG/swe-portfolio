@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Menu } from "../Menu";
 
 import domLogo from "/dom_logo_2_black.png";
 
