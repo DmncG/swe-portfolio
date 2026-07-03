@@ -17,6 +17,7 @@ function App() {
   const [active, setActive] = useState(0);
   const [isProd] = useState(import.meta.env.PROD);
   const isBottom = usePageBottom();
+  console.log("isBottom", isBottom);
 
   const sectionRefs = [
     useRef<HTMLDivElement>(null),
