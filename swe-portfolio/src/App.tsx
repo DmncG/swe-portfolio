@@ -12,9 +12,11 @@ import { CVButton } from './components/CVButton';
 import { cssClassNames } from './utils/cssUtils';
 import { usePageBottom } from "./utils/customHooks/usePageBottom.tsx";
 import './App.css'
+import { ComingSoon } from './sections/ComingSoonSection/index.tsx';
 
 function App() {
   const [active, setActive] = useState(0);
+  const [underConstruction, setUnderConstruction] = useState(true);
   const isBottom = usePageBottom();
 
   const sectionRefs = [
@@ -41,7 +43,7 @@ function App() {
   };
 
   const SECTIONS: string[] = ["Home", "Experience", "Projects", "About"]
-  return (
+  return underConstruction ? <div ref={sectionRefs[0]}><ComingSoon /></div> : (
     <>
       <TopNav sections={SECTIONS} active={active} onNav={scrollTo} />
       <div className="bg-background min-h-screen relative">
