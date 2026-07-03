@@ -2,7 +2,11 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { skillList } from "./skillList";
 
-export const Skills = () => {
+type skillsProps = {
+  isBottom: boolean
+};
+
+export const Skills = ({isBottom}: skillsProps) => {
 
     const skillGroupRef = useRef(null);
     const proficiencyRef = useRef(null);
@@ -16,36 +20,32 @@ export const Skills = () => {
             <motion.p 
               className="text-xs tracking-[0.3em] uppercase text-primary mb-3" 
               style={{ fontFamily: "'DM Mono', monospace" }}
-              initial={{
-                opacity: 0,
-                x: -300,
-              }}
-              whileInView={{
+              animate={ skillGroupInView || isBottom ? {
                 opacity: 1,
                 x: 0,
                 transition: {
-                  duration: 1,
+                  duration: 1
                 }
+              } : {
+                opacity: 0,
+                x: -300
               }}
-              viewport={{ once: true, amount: 0.5}}
             >
               What I work with
             </motion.p>
             <motion.h2 
               className="text-5xl md:text-6xl font-bold text-foreground"
               style={{ fontFamily: "'Lora', serif" }}
-              initial={{
-                opacity: 0,
-                x: 300,
-              }}
-              whileInView={{
+              animate={ skillGroupInView || isBottom ? {
                 opacity: 1,
                 x: 0,
                 transition: {
-                  duration: 1,
+                  duration: 1
                 }
+              } : {
+                opacity: 0,
+                x: 300
               }}
-              viewport={{ once: true, amount: 0.5}}
             >
               Skills & Toolkit
             </motion.h2>
@@ -57,7 +57,7 @@ export const Skills = () => {
                 key={group.category} 
                 className="rounded-2xl p-7 border relative overflow-hidden transition-all duration-300 hover:shadow-lg"
                 style={{ background: "rgba(254,249,243,0.9)", borderColor: "rgba(120,80,40,0.1)" }}
-                animate={skillGroupInView ? { 
+                animate={skillGroupInView || isBottom ? { 
                   opacity: 1, 
                   transition: {
                   delay: i * 0.5,
@@ -111,7 +111,7 @@ export const Skills = () => {
                       className="h-full rounded-full transition-all duration-700"
                       style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${color}99, ${color})` }}
                       animate={
-                        proficiencyInView ? {
+                        proficiencyInView || isBottom ? {
                           opacity: 1,
                           scaleX: 1,
                           transition: {

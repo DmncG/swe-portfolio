@@ -5,12 +5,15 @@ import { projectList } from "./projectList";
 import { experienceList } from "./experienceList";
 import { ProjectCard } from "../../components/ProjectCard";
 
-export const Projects = (isBottom: boolean) => {
-   const workHistoryRef = useRef(null);
+type projectsProps = {
+  isBottom: boolean
+}
+
+export const Projects = ({ isBottom }: projectsProps) => {
+   const projectsRef = useRef(null);
    const experienceRef = useRef(null);
-   const whInView = useInView(workHistoryRef, {margin: "-50%", once: true })
-   const expInView = useInView(experienceRef, {margin: "-40%", once: true })
-   console.log("isBottom", isBottom)
+   const projectsInView = useInView(projectsRef, {margin: "-50%", once: true })
+   const expInView = useInView(experienceRef, {margin: "-30%", once: true })
 
 const sentence = {
   hidden: { opacity: 1 },
@@ -33,12 +36,12 @@ const letter = {
 
    return (
       <section className="relative min-h-screen pt-28 px-6 overflow-hidden">
-        <div className="relative z-10 max-w-6xl mx-auto">
+        <div ref={projectsRef} className="relative z-10 max-w-6xl mx-auto">
           <div className="mb-16">
             <motion.p
               className="text-xs tracking-[0.3em] uppercase text-primary mb-3" 
               style={{ fontFamily: "'DM Mono', monospace" }}
-              animate={ whInView || isBottom ? { 
+              animate={ projectsInView || isBottom ? { 
                 opacity: 1,
                 x: 0,
                 transition: {
@@ -57,7 +60,7 @@ const letter = {
             <motion.h2 
               className="text-5xl md:text-6xl font-bold text-foreground" 
               style={{ fontFamily: "'Lora', serif" }}
-              animate={ whInView || isBottom ? {
+              animate={ projectsInView|| isBottom ? {
                 opacity: 1,
                 x: 0,
                 transition: {
@@ -75,6 +78,16 @@ const letter = {
           {/* Projects grid */}
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
+            animate={ projectsInView || isBottom ? {
+              scale: 1,
+              opacity: 1,
+              transition: {
+                duration: 0.7
+              }
+            } : {
+              scale: 0.8,
+              opacity: 0
+            }}
             initial={{ scale: 0.8, opacity: 0}}
             whileInView={{
               scale: 1, 
@@ -93,8 +106,8 @@ const letter = {
             <motion.p 
               className="text-xs tracking-[0.3em] uppercase text-primary" 
               style={{ fontFamily: "'DM Mono', monospace" }}
-              ref={workHistoryRef}
-              animate={whInView ? 
+              ref={experienceRef}
+              animate={expInView || isBottom ? 
                 { opacity: 1, y: 0, transition: { duration: 1 } } 
                 : { opacity: 0, y: -150 }}
             >
@@ -108,13 +121,13 @@ const letter = {
                     <motion.div 
                       className="w-3 h-3 rounded-full mt-1.5 shrink-0 transition-colors duration-200 group-hover:bg-primary"
                       style={{ background: "#c96d3a", opacity: 0.7 }}
-                      animate={expInView ? { opacity: 1, transition: { delay: i + 0.25} } : { opacity: 0 }}
+                      animate={expInView || isBottom ? { opacity: 1, transition: { delay: i + 0.25} } : { opacity: 0 }}
                     />
                     {i < experienceList.length - 1 && (
                       <motion.div 
                         className="w-px flex-1 my-2"
                         style={{ background: "rgba(120,80,40,0.2)" }}
-                        animate={expInView ? { scaleY: 1, originY: "top", transition: { duration: 1, delay: i + 0.25 }, opacity: 1 } : { scaleY: 0, originY: "top", opacity: 0 }}
+                        animate={expInView || isBottom ? { scaleY: 1, originY: "top", transition: { duration: 1, delay: i + 0.25 }, opacity: 1 } : { scaleY: 0, originY: "top", opacity: 0 }}
                       />
                     )}
                   </div>
@@ -133,7 +146,7 @@ const letter = {
                       className="text-sm text-muted-foreground leading-relaxed" 
                       style={{ fontFamily: "'Nunito', sans-serif" }}
                       variants={sentence}
-                      animate={expInView ? "visible" : "hidden"}
+                      animate={expInView || isBottom ? "visible" : "hidden"}
                     >
                       {e.desc.split('').map((l, i) => <motion.span key={`${l}-${i}`} variants={letter}>{l}</motion.span>)}
                     </motion.p>
