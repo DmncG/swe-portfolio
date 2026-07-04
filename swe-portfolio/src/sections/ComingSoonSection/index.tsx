@@ -75,16 +75,22 @@ function ExplodingText() {
     const colors = new Float32Array(numFaces * 3 * 3);
     const displacements = new Float32Array(numFaces * 3 * 3);
 
-    const color = new THREE.Color();
+    // Theme palette (see src/theme.css :root)
+    const themeColors = [
+      new THREE.Color('#c96d3a'), // --primary
+      new THREE.Color('#fdf6ec'), // --primary-foreground
+      new THREE.Color('#f4c14f'), // --accent
+      new THREE.Color('#1e4360'), // --secondary-foreground
+    ];
 
     for (let i = 0; i < numFaces; i++) {
-      // Randomize color per face
-      color.setHSL(0.5 + 0.5 * randomRange(0, 1), 0.7, 0.5);
+      // Randomize color per face, picked from the theme palette
+      const color = themeColors[Math.floor(randomRange(0, themeColors.length))];
 
       // Randomize outward push direction vector per face
-      const dx = randomRange(-0.5, 0.5);
-      const dy = randomRange(-0.5, 0.5);
-      const dz = randomRange(-0.5, 0.5);
+      const dx = randomRange(-8, 8);
+      const dy = randomRange(-8, 8);
+      const dz = randomRange(-8, 8);
 
       for (let j = 0; j < 3; j++) {
         const index = (i * 3 + j) * 3;
