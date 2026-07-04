@@ -5,11 +5,7 @@ import * as THREE from 'three';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { TessellateModifier } from 'three/examples/jsm/modifiers/TessellateModifier.js';
-
-// Helper utility for random numbers
-function randomRange(min: number, max: number) {
-  return min + Math.random() * (max - min);
-}
+import { randomRange } from '../../utils/r3fUtils';
 
 // Custom Shader Material to handle the exploding text effect
 const TessellationShaderMaterial = {
