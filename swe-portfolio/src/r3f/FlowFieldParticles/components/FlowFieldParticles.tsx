@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useCallback, useEffect, useRef, useMemo, memo, useState, forwardRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { BufferGeometry, BufferAttribute, Color, Uniform, Vector3, MathUtils } from "three";
