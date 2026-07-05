@@ -5,6 +5,8 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import { Leva, useControls, folder } from "leva";
 import * as THREE from 'three'
 
+import type { UseScrollOptions } from 'motion/react';
+
 import { randomRange } from '../../utils/r3fUtils';
 
 type repulsionCurveProps = {
@@ -13,9 +15,10 @@ type repulsionCurveProps = {
     pRatio: number,
     qRatio: number,
     radiusValue: number,
+    scrollOptions: UseScrollOptions,
 }
 
-function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio, qRatio, radiusValue }: repulsionCurveProps) {
+function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio, qRatio, radiusValue, scrollOptions }: repulsionCurveProps) {
   const materialRef = useRef<THREE.ShaderMaterial>(null)
 
   // 1. Programmatically generate a complex 3D Torus Knot path layout
@@ -183,7 +186,7 @@ function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio
   )
 }
 
-export function TestParticleCurve() {
+export function TestParticleCurve(scrollOptions: UseScrollOptions) {
   
   const {
     particle_count,
@@ -202,7 +205,7 @@ export function TestParticleCurve() {
         radius_value: { label: "radius", value: 3, min: 0, max: 50 }
     }),
     Particles: folder({
-        particle_count: { label: "count", value: 12000, min: 0, max: 100000 }
+        particle_count: { label: "count", value: 20000, min: 0, max: 100000 }
     }),
     Bloom: folder({
         intensity_value: { label: "intensity", value: 2.8, min: 0, max: 10},
@@ -212,8 +215,11 @@ export function TestParticleCurve() {
   })
 
   return (
-    <div style={{ width: '100vw', height: '100vh', background: '#020104' }}>
-      <Canvas gl={{ toneMapping: THREE.ACESFilmicToneMapping }} camera={{ position: [0, 0, 30], fov: 60 }}>
+    <div 
+      className="fixed inset-0 z-0" 
+      // style={{ width: '100vw', height: '100vh', background: '#020104' }}
+    >
+      <Canvas gl={{ toneMapping: THREE.ACESFilmicToneMapping }} camera={{ position: [0, 0, 0], fov: 75 }}>
         <color attach="background" args={['#020104']} />
         
         <Center>
@@ -223,6 +229,7 @@ export function TestParticleCurve() {
             pRatio={p_ratio}
             qRatio={q_ratio}
             radiusValue={radius_value}
+            scrollOptions={scrollOptions}
           />
         </Center>
         
@@ -242,7 +249,7 @@ export function TestParticleCurve() {
         //   autoRotateSpeed={0.5}
         />
       </Canvas>
-      <Leva flat oneLineLabels collapsed={false} />
+      <Leva flat oneLineLabels collapsed={false} hidden={true} />
     </div>
   )
 }

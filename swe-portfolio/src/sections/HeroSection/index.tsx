@@ -1,10 +1,8 @@
 import { motion } from "motion/react"
-import { HeroParticles } from "./HeroParticles"
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
-      <HeroParticles />
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 z-10">
 
       <div className="relative z-10 text-center max-w-3xl mx-auto">
         <motion.p
