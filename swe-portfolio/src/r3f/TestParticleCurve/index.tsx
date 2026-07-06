@@ -1,11 +1,10 @@
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Center } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import { Leva, useControls, folder } from "leva";
 import * as THREE from 'three'
-
-import type { UseScrollOptions } from 'motion/react';
+import type { ScrollOptionsProps } from '../../App';
 
 import { randomRange } from '../../utils/r3fUtils';
 
@@ -15,10 +14,10 @@ type repulsionCurveProps = {
     pRatio: number,
     qRatio: number,
     radiusValue: number,
-    scrollOptions: UseScrollOptions,
+    scrollOptions: ScrollOptionsProps,
 }
 
-function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio, qRatio, radiusValue, scrollOptions }: repulsionCurveProps) {
+function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio, qRatio, radiusValue }: repulsionCurveProps) {
   const materialRef = useRef<THREE.ShaderMaterial>(null)
 
   // 1. Programmatically generate a complex 3D Torus Knot path layout
@@ -186,7 +185,7 @@ function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio
   )
 }
 
-export function TestParticleCurve(scrollOptions: UseScrollOptions) {
+export function TestParticleCurve(scrollOptions: ScrollOptionsProps) {
   
   const {
     particle_count,

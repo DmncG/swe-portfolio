@@ -21,12 +21,20 @@ import { usePageBottom } from "./utils/customHooks/usePageBottom.tsx";
 import './App.css'
 import { ComingSoon } from './sections/ComingSoonSection/index.tsx';
 import { useScroll } from "motion/react";
+import type { MotionValue } from "motion/react";
+
+export type ScrollOptionsProps = {
+  scrollX: MotionValue<number>
+  scrollY: MotionValue<number>
+  scrollXProgress: MotionValue<number>
+  scrollYProgress: MotionValue<number>
+}
 
 function App() {
   const [active, setActive] = useState(0);
   const [isProd] = useState(import.meta.env.PROD);
   const isBottom = usePageBottom();
-  const scrollOptions = useScroll();
+  const scrollOptions: ScrollOptionsProps = useScroll();
 
   const sectionRefs = [
     useRef<HTMLDivElement>(null),
@@ -57,7 +65,6 @@ function App() {
   return isProd ? <div><ComingSoon /></div> : (
     <>
       <TestParticleCurve scrollOptions={scrollOptions} />
-      <TopNav sections={SECTIONS} active={active} onNav={scrollTo} />
       <div className="bg-transparent min-h-screen relative">
       {/* Subtle paper grain overlay */}
       {/* <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.03]"
