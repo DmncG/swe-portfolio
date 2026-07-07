@@ -1,3 +1,5 @@
+"use no memo";
+
 import { useState } from "react";
 import { motion } from "motion/react";
 
@@ -15,11 +17,11 @@ export const ThemeToggle = () => {
           onClick={toggleThemeSetting}
         >
             <motion.div
-                className="w-3 h-3 bg-black rounded-full"
+                className="w-4 h-4 bg-accent rounded-full"
                 layout
                 transition={{
                     type: "spring",
-                    visualDuration: 1,
+                    visualDuration: 0.3,
                     bounce: 0.5,
                 }}
             />
