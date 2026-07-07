@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ThemeToggle } from "../ThemeToggle";
 
 import domLogo from "/dom_logo_2_black.png";
 
@@ -31,6 +32,7 @@ export const TopNav = ({ sections, active, onNav }: TopNavProps) => {
               {s}
             </button>
           ))}
+          <ThemeToggle />
         </div>
         {/* Mobile hamburger */}
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
@@ -45,6 +47,7 @@ export const TopNav = ({ sections, active, onNav }: TopNavProps) => {
                 {s}
               </button>
             ))}
+            {/* <ThemeToggle /> */}
           </div>
         )}
       </nav>
