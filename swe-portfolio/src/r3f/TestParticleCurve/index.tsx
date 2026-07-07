@@ -1,6 +1,6 @@
-import { useRef, useMemo, useEffect } from 'react'
+import { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Center } from '@react-three/drei'
+import { Center } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import { Leva, useControls, folder } from "leva";
 import * as THREE from 'three'
@@ -225,15 +225,8 @@ export function TestParticleCurve({ scrollYProgress }: ScrollOptionsProps) {
             mipmapBlur 
           />
         </EffectComposer>
-        
-        {/* <OrbitControls
-          enableZoom={true}
-          enablePan={false}
-        //   autoRotate={true}
-        //   autoRotateSpeed={0.5}
-        /> */}
       </Canvas>
-      <Leva flat oneLineLabels collapsed={false} hidden={false} />
+      <Leva flat oneLineLabels collapsed={false} hidden={true} />
     </div>
   )
 }
