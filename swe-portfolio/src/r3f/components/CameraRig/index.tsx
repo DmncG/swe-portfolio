@@ -14,9 +14,9 @@ type Waypoint = {
 }
 
 const WAYPOINTS: Waypoint[] = [
-  { progress: 0.0, position: [0, 0, 5], lookAt: [0, 0, 0] },        // Hero - close
-  { progress: 0.25, position: [5, 4, 1], lookAt: [0, 0, 0] },      // Projects - orbited right, close
-  { progress: 0.60, position: [3, 5, 1], lookAt: [0, 0, 0] },     // About/Skills - orbited left, close
+  { progress: 0.0, position: [0, 0, 2], lookAt: [0, 0, 0] },        // Hero - close
+  { progress: 0.25, position: [3, 3, 1], lookAt: [0, 0, 0] },      // Projects - orbited right, close
+  { progress: 0.60, position: [2, 4, 1], lookAt: [0, 0, 0] },     // About/Skills - orbited left, close
   { progress: 1.0, position: [0, 0, 1], lookAt: [0, 0, 0] }         // End - back to close
 ]
 

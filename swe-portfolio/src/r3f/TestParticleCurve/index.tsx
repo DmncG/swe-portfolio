@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, type RefObject } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Center } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
@@ -8,6 +8,7 @@ import type { ScrollOptionsProps } from '../../App';
 import { CameraRig } from '../components/CameraRig';
 
 import { randomRange } from '../../utils/r3fUtils';
+import { usePointerRef } from '../r3fUtils';
 
 type repulsionCurveProps = {
     particleCount: number,
@@ -15,9 +16,10 @@ type repulsionCurveProps = {
     pRatio: number,
     qRatio: number,
     radiusValue: number,
+    pointerRef: RefObject<{x: number, y:number}>
 }
 
-function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio, qRatio, radiusValue }: repulsionCurveProps) {
+function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio, qRatio, radiusValue, pointerRef }: repulsionCurveProps) {
   const materialRef = useRef<THREE.ShaderMaterial>(null)
 
   // 1. Programmatically generate a complex 3D Torus Knot path layout
@@ -77,8 +79,11 @@ function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio
       materialRef.current.uniforms.uTime.value = state.clock.getElapsedTime()
 
       // Track relative canvas tracking pointer coordinates
-      const targetX = state.pointer.x * 5.0
-      const targetY = state.pointer.y * 5.0
+      // const targetX = state.pointer.x * 5.0
+      // const targetY = state.pointer.y * 5.0
+
+      const targetX = pointerRef.current.x * 5.0
+      const targetY = pointerRef.current.y * 5.0
 
       materialRef.current.uniforms.uMouse.value.x = THREE.MathUtils.lerp(
         materialRef.current.uniforms.uMouse.value.x,
@@ -171,6 +176,7 @@ function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio
 }
 
 export function TestParticleCurve({ scrollYProgress }: ScrollOptionsProps) {
+  const pointerRef = usePointerRef();
   
   const {
     particle_count,
@@ -192,7 +198,7 @@ export function TestParticleCurve({ scrollYProgress }: ScrollOptionsProps) {
         particle_count: { label: "count", value: 20000, min: 0, max: 100000 }
     }),
     Bloom: folder({
-        intensity_value: { label: "intensity", value: 2.8, min: 0, max: 10},
+        intensity_value: { label: "intensity", value: 0.3, min: 0, max: 10},
         luminance_threshold:{label: "luminance_threshold", value: 0.02, min: 0.00, max: 1},
         luminance_smoothing: {label: "luminance_smoothing", value: 0.8, min: 0.0, max: 1} 
     })
@@ -200,8 +206,7 @@ export function TestParticleCurve({ scrollYProgress }: ScrollOptionsProps) {
 
   return (
     <div 
-      className="fixed inset-0 z-0" 
-      // style={{ width: '100vw', height: '100vh', background: '#020104' }}
+      className="fixed inset-0 z-0 pointer-events-none"
     >
       <Canvas gl={{ toneMapping: THREE.ACESFilmicToneMapping }} camera={{ position: [0, 0, 0], fov: 75 }}>
         <CameraRig scrollYProgress={scrollYProgress} />
@@ -214,6 +219,7 @@ export function TestParticleCurve({ scrollYProgress }: ScrollOptionsProps) {
             pRatio={p_ratio}
             qRatio={q_ratio}
             radiusValue={radius_value}
+            pointerRef={pointerRef}
           />
         </Center>
         
