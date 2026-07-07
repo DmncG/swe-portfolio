@@ -5,6 +5,7 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import { Leva, useControls, folder } from "leva";
 import * as THREE from 'three'
 import type { ScrollOptionsProps } from '../../App';
+import { CameraRig } from '../components/CameraRig';
 
 import { randomRange } from '../../utils/r3fUtils';
 
@@ -14,7 +15,6 @@ type repulsionCurveProps = {
     pRatio: number,
     qRatio: number,
     radiusValue: number,
-    scrollOptions: ScrollOptionsProps,
 }
 
 function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio, qRatio, radiusValue }: repulsionCurveProps) {
@@ -93,21 +93,6 @@ function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio
     }
   })
 
-  useFrame((state) => {
-    // 1. Get the current cursor coordinates (-1 to +1)
-    const { x, y } = state.pointer
-
-    // 2. Define where we want the camera to drift based on the mouse
-    const targetX = x * 2.0
-    const targetY = y * 2.0 + 5 // Keep a baseline height elevation of 5 units
-
-    // 3. Smoothly slide the camera's position towards the targets (0.05 = lazy weight)
-    state.camera.position.x = THREE.MathUtils.lerp(state.camera.position.x, targetX, 0.05)
-    state.camera.position.y = THREE.MathUtils.lerp(state.camera.position.y, targetY, 0.05)
-
-    // 4. Always keep the camera lens strictly pointing at the center knot structure
-    state.camera.lookAt(0, 0, 0)
-  })
 
   return (
     <points>
@@ -185,7 +170,7 @@ function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio
   )
 }
 
-export function TestParticleCurve(scrollOptions: ScrollOptionsProps) {
+export function TestParticleCurve({ scrollYProgress }: ScrollOptionsProps) {
   
   const {
     particle_count,
@@ -219,6 +204,7 @@ export function TestParticleCurve(scrollOptions: ScrollOptionsProps) {
       // style={{ width: '100vw', height: '100vh', background: '#020104' }}
     >
       <Canvas gl={{ toneMapping: THREE.ACESFilmicToneMapping }} camera={{ position: [0, 0, 0], fov: 75 }}>
+        <CameraRig scrollYProgress={scrollYProgress} />
         <color attach="background" args={['#020104']} />
         
         <Center>
@@ -228,7 +214,6 @@ export function TestParticleCurve(scrollOptions: ScrollOptionsProps) {
             pRatio={p_ratio}
             qRatio={q_ratio}
             radiusValue={radius_value}
-            scrollOptions={scrollOptions}
           />
         </Center>
         
@@ -241,14 +226,14 @@ export function TestParticleCurve(scrollOptions: ScrollOptionsProps) {
           />
         </EffectComposer>
         
-        <OrbitControls 
-          enableZoom={true} 
-          enablePan={false} 
-        //   autoRotate={true} 
+        {/* <OrbitControls
+          enableZoom={true}
+          enablePan={false}
+        //   autoRotate={true}
         //   autoRotateSpeed={0.5}
-        />
+        /> */}
       </Canvas>
-      <Leva flat oneLineLabels collapsed={false} hidden={true} />
+      <Leva flat oneLineLabels collapsed={false} hidden={false} />
     </div>
   )
 }

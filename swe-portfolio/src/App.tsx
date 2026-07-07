@@ -64,7 +64,7 @@ function App() {
   const SECTIONS: string[] = ["Home", "Experience", "Projects", "About"]
   return isProd ? <div><ComingSoon /></div> : (
     <>
-      <TestParticleCurve scrollOptions={scrollOptions} />
+      <TestParticleCurve {...scrollOptions} />
       <div className="bg-transparent min-h-screen relative">
       {/* Subtle paper grain overlay */}
       {/* <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.03]"
