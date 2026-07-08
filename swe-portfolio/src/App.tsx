@@ -61,8 +61,6 @@ function App() {
     sectionRefs[i].current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  console.log("scrollOptions", scrollOptions)
-
   const SECTIONS: string[] = ["Home", "Experience", "Projects", "About"]
   return isProd ? <div><ComingSoon /></div> : (
     <>
