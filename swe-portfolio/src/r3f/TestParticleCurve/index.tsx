@@ -124,7 +124,8 @@ const ComplexFlowingRepulsionCurve = ({ particleCount: pCount, loopCount, pRatio
           uColor: { value: new THREE.Color(isDark ? '#7b00ff' : '#bababa') },
           uHotColor: { value: new THREE.Color(isDark ? '#ff0099' : '#d15b06') },
           uBrightnessBase: { value: isDark ? 2.0 : 1.0 },
-          uBrightnessRepel: { value: isDark ? 5.0 : 0.8 }
+          uBrightnessRepel: { value: isDark ? 5.0 : 0.8 },
+          uOutline: { value: isDark ? 0.0 : 1.0 }
         }}
         vertexShader={`
           uniform float uTime;
@@ -168,13 +169,21 @@ const ComplexFlowingRepulsionCurve = ({ particleCount: pCount, loopCount, pRatio
           uniform vec3 uHotColor;
           uniform float uBrightnessBase;
           uniform float uBrightnessRepel;
+          uniform float uOutline;
           varying float vRepel;
 
           void main() {
             float circ = distance(gl_PointCoord, vec2(0.5));
             if (circ > 0.5) discard;
 
-            float alpha = smoothstep(0.5, 0.0, circ);
+            float filledAlpha = smoothstep(0.5, 0.0, circ);
+
+            // Ring mask: a thin band near the edge instead of a filled disc
+            float ringRadius = 0.36;
+            float ringWidth = 0.07;
+            float ringAlpha = smoothstep(ringWidth, 0.0, abs(circ - ringRadius));
+
+            float alpha = mix(filledAlpha, ringAlpha, uOutline);
 
             // Deflected particles shift toward the hot accent color
             vec3 hotColor = mix(uColor, uHotColor, vRepel);
