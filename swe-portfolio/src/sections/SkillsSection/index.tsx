@@ -55,7 +55,7 @@ export const Skills = ({isBottom}: skillsProps) => {
             {skillList.map((group, i) => (
               <motion.div 
                 key={group.category} 
-                className="bg-glass backdrop-blur-md border border-white/25 shadow-xl rounded-xl p-7 relative overflow-hidden transition-all duration-300 hover:shadow-lg"
+                className="bg-glass backdrop-blur-sm border border-white/25 shadow-xl rounded-xl p-7 relative overflow-hidden transition-all duration-300 hover:shadow-lg"
                 animate={skillGroupInView || isBottom ? { 
                   opacity: 1, 
                   transition: {

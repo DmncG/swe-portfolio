@@ -221,7 +221,7 @@ export const TestParticleCurve = ({ scrollYProgress, theme }: ParticleCurveProps
         particle_count: { label: "count", value: 20000, min: 0, max: 100000 }
     }),
     Bloom: folder({
-        intensity_value: { label: "intensity", value: 0.3, min: 0, max: 10},
+        intensity_value: { label: "intensity", value: 0.3, min: 0.0, max: 10},
         luminance_threshold:{label: "luminance_threshold", value: 0.02, min: 0.00, max: 1},
         luminance_smoothing: {label: "luminance_smoothing", value: 0.8, min: 0.0, max: 1} 
     })
