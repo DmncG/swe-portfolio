@@ -143,7 +143,7 @@ const letter = {
                       <span className="text-xs text-muted-foreground ml-auto" style={{ fontFamily: "'DM Mono', monospace" }}>{e.period}</span>
                     </motion.div>
                     <motion.p 
-                      className="text-sm text-muted-foreground leading-relaxed" 
+                      className="text-sm text-left text-muted-foreground leading-relaxed" 
                       style={{ fontFamily: "'Nunito', sans-serif" }}
                       variants={sentence}
                       animate={expInView || isBottom ? "visible" : "hidden"}

@@ -1,5 +1,5 @@
 export const experienceList = [
-    { role: "Senior Frontend Engineer", company: "Vanta Systems", period: "2023 – Present", desc: "Lead the design-system team, set frontend architecture standards, and mentor 3 junior engineers." },
-    { role: "Full-Stack Developer", company: "Arclight Studio", period: "2021 – 2023", desc: "Built client-facing SaaS products from idea to launch. Owned full delivery from API design to deployment." },
-    { role: "Software Engineer", company: "Seedling Labs", period: "2020 – 2021", desc: "Contributed to a React Native app used by 30k users. Improved crash-free rate from 92% to 99.1%." },
+    { role: "Software Engineer", company: "Clever Inc.", period: "2022 – 2026", desc: "Led the multiyear and multi-product purchases project in the Clever purchasing flow. Organized knowledge shares for newly implemented features and presented team objectives to the entire engineering department." },
+    { role: "Frontend Developer", company: "Strand Book Store", period: "2018 – 2021", desc: "Sole frontend developer who built and managed the entire frontend of Strand Book Store’s e-commerce website. 177% increase in sales per unique visitor in a year. Created the design system, component library, and style guide." },
+    { role: "Staff Accountant", company: "American Technion Society", period: "2014 – 2017", desc: "Implemented the first automated T & E System across the entire organization. Established best practices for annuity scheduling alongside the Investment Manager and the Associate Vice President, Finance for more timely and accurate payments." },
   ];
