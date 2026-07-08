@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { MdMenu, MdClose } from "react-icons/md";
 import { ThemeToggle } from "../ThemeToggle";
 import { DomDot } from "../DomDot";
@@ -42,7 +42,7 @@ export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) =>
         <div className="hidden md:flex gap-8">
           {sections.map((s, i) => (
             <button key={s} onClick={() => onNav(i)}
-              className={`text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer ${active === i ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+              className={`text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer ${active === i ? "text-dom-dot" : "text-muted-foreground hover:text-foreground"}`}
               style={{ fontFamily: "'Nunito', sans-serif" }}>
               {s}
             </button>
@@ -69,8 +69,15 @@ export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) =>
             </motion.div>
           )}
         </button>
+        <AnimatePresence initial={false}>
         {open && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-card border-b border-border flex flex-col py-4 px-8 gap-4">
+          <motion.div 
+            className="md:hidden absolute top-full left-0 right-0 bg-card border border-b flex flex-col py-4 px-8 gap-4"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1, originX: "right", originY: "top" }}
+            exit={{ opacity: 0, scale: 0 }}
+            key="box"
+          >
             {sections.map((section, i) => (
               <motion.button 
                 key={section} 
@@ -81,8 +88,9 @@ export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) =>
               </motion.button>
             ))}
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-          </div>
+          </motion.div>
         )}
+        </AnimatePresence>
       </nav>
     );
   }
