@@ -10,16 +10,21 @@ import { CameraRig } from '../components/CameraRig';
 import { randomRange } from '../../utils/r3fUtils';
 import { usePointerRef } from '../r3fUtils';
 
+import type { ThemeToggleProps } from '../../components/ThemeToggle';
+
 type repulsionCurveProps = {
     particleCount: number,
     loopCount: number,
     pRatio: number,
     qRatio: number,
     radiusValue: number,
-    pointerRef: RefObject<{x: number, y:number}>
+    pointerRef: RefObject<{x: number, y:number}>,
+    isDark: boolean
 }
 
-function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio, qRatio, radiusValue, pointerRef }: repulsionCurveProps) {
+type ParticleCurveProps = ScrollOptionsProps & ThemeToggleProps;
+
+const ComplexFlowingRepulsionCurve = ({ particleCount: pCount, loopCount, pRatio, qRatio, radiusValue, pointerRef, isDark }: repulsionCurveProps) => {
   const materialRef = useRef<THREE.ShaderMaterial>(null)
 
   // 1. Programmatically generate a complex 3D Torus Knot path layout
@@ -111,11 +116,15 @@ function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio
         ref={materialRef}
         transparent={true}
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={isDark ? THREE.AdditiveBlending : THREE.NormalBlending}
         uniforms={{
           uTime: { value: 0 },
           uMouse: { value: new THREE.Vector2(0, 0) },
-          uColor: { value: new THREE.Color('#7b00ff') } // Electric Violet/Indigo Glow
+          // Dark: neon violet glow. Light: deep indigo reads against the cream backdrop without additive blending washing it out.
+          uColor: { value: new THREE.Color(isDark ? '#7b00ff' : '#bababa') },
+          uHotColor: { value: new THREE.Color(isDark ? '#ff0099' : '#d15b06') },
+          uBrightnessBase: { value: isDark ? 2.0 : 1.0 },
+          uBrightnessRepel: { value: isDark ? 5.0 : 0.8 }
         }}
         vertexShader={`
           uniform float uTime;
@@ -156,18 +165,21 @@ function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio
         `}
         fragmentShader={`
           uniform vec3 uColor;
+          uniform vec3 uHotColor;
+          uniform float uBrightnessBase;
+          uniform float uBrightnessRepel;
           varying float vRepel;
-          
+
           void main() {
             float circ = distance(gl_PointCoord, vec2(0.5));
             if (circ > 0.5) discard;
-            
+
             float alpha = smoothstep(0.5, 0.0, circ);
-            
-            // Deflected particles change colors to a hyper-energetic neon pink
-            vec3 hotColor = mix(uColor, vec3(1.0, 0.0, 0.6), vRepel);
-            
-            gl_FragColor = vec4(hotColor * (2.0 + vRepel * 5.0), alpha);
+
+            // Deflected particles shift toward the hot accent color
+            vec3 hotColor = mix(uColor, uHotColor, vRepel);
+
+            gl_FragColor = vec4(hotColor * (uBrightnessBase + vRepel * uBrightnessRepel), alpha);
           }
         `}
       />
@@ -175,9 +187,10 @@ function ComplexFlowingRepulsionCurve({ particleCount: pCount, loopCount, pRatio
   )
 }
 
-export function TestParticleCurve({ scrollYProgress }: ScrollOptionsProps) {
+export const TestParticleCurve = ({ scrollYProgress, theme }: ParticleCurveProps) => {
   const pointerRef = usePointerRef();
-  
+  const isDark = theme === "dark";
+
   const {
     particle_count,
     loop_count,
@@ -210,27 +223,30 @@ export function TestParticleCurve({ scrollYProgress }: ScrollOptionsProps) {
     >
       <Canvas gl={{ toneMapping: THREE.ACESFilmicToneMapping }} camera={{ position: [0, 0, 0], fov: 75 }}>
         <CameraRig scrollYProgress={scrollYProgress} />
-        <color attach="background" args={['#020104']} />
-        
+        <color attach="background" args={isDark ? ["#020104"] : ['#fdf6ec']} />
+
         <Center>
-          <ComplexFlowingRepulsionCurve 
+          <ComplexFlowingRepulsionCurve
             particleCount={particle_count}
             loopCount={loop_count}
             pRatio={p_ratio}
             qRatio={q_ratio}
             radiusValue={radius_value}
             pointerRef={pointerRef}
+            isDark={isDark}
           />
         </Center>
-        
-        <EffectComposer>
-          <Bloom 
-            intensity={intensity_value} 
-            luminanceThreshold={luminance_threshold} 
-            luminanceSmoothing={luminance_smoothing} 
-            mipmapBlur 
-          />
-        </EffectComposer>
+
+        {isDark && (
+          <EffectComposer>
+            <Bloom
+              intensity={intensity_value}
+              luminanceThreshold={luminance_threshold}
+              luminanceSmoothing={luminance_smoothing}
+              mipmapBlur
+            />
+          </EffectComposer>
+        )}
       </Canvas>
       <Leva flat oneLineLabels collapsed={false} hidden={true} />
     </div>
