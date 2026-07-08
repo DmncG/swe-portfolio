@@ -98,11 +98,11 @@ export const About = () => {
                 initial={{ opacity: 0}}
               >
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <MdMyLocation size={14} className="text-black shrink-0" />
+                  <MdMyLocation size={14} className={`text-black shrink-0 ${isDark ? "invert" : ""}`} />
                   <span>Melbourne, Australia</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <MdMail size={14} className="text-black shrink-0" />
+                  <MdMail size={14} className={`text-black shrink-0 ${isDark ? "invert" : ""}`} />
                   <a href="mailto:micksdev@gmail.com" className="hover:text-foreground transition-colors">micksdev@gmail.com</a>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
