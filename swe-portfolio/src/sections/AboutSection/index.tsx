@@ -57,7 +57,14 @@ export const About = () => {
             </motion.h2>
           </div>
   
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start bg-glass backdrop-blur-md border border-white/25 shadow-xl rounded-xl py-8 px-16">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start bg-glass backdrop-blur-md border border-white/25 shadow-xl rounded-xl py-8 px-16"
+            animate={ isInView ? {
+                  opacity: 1,
+                } : {
+                  opacity: 0
+                }}
+          >
             {/* Photo placeholder */}
             <div className="md:col-span-2 flex flex-col items-center md:items-start gap-4">
               <motion.div 
@@ -178,7 +185,7 @@ export const About = () => {
                 </motion.a>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
     );
