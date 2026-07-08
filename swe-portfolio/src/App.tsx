@@ -15,15 +15,14 @@ import { Skills } from "./sections/SkillsSection";
 import { NavDots } from "./components/NavDots";
 import { TopNav } from "./components/TopNav";
 import { CVButton } from "./components/CVButton";
+import { ThemeContext } from './components/context/ThemeContext.tsx';
+
 import { useTheme } from "./utils/customHooks/useTheme.tsx";
+import { usePageBottom } from "./utils/customHooks/usePageBottom.tsx";
 
 import { TestParticleCurve } from './r3f/TestParticleCurve'
-// import { TestFlowFieldParticles } from './r3f/FlowFieldParticles'
 
-import { usePageBottom } from "./utils/customHooks/usePageBottom.tsx";
 import './App.css'
-import { ComingSoon } from './sections/ComingSoonSection/index.tsx';
-import { ThemeContext } from './components/context/ThemeContext.tsx';
 
 export type ScrollOptionsProps = {
   scrollX: MotionValue<number>
@@ -34,7 +33,6 @@ export type ScrollOptionsProps = {
 
 function App() {
   const [active, setActive] = useState(0);
-  const [isProd] = useState(import.meta.env.PROD);
   const isBottom = usePageBottom();
   const scrollOptions: ScrollOptionsProps = useScroll();
   const themeConfig = useTheme();
@@ -63,7 +61,7 @@ function App() {
   };
 
   const SECTIONS: string[] = ["Home", "Projects & Experience", "Skills", "About"]
-  return isProd ? <div><ComingSoon /></div> : (
+  return (
     <>
       <ThemeContext value={themeConfig.theme}>
       <TestParticleCurve {...scrollOptions} {...themeConfig} />
@@ -86,7 +84,6 @@ function App() {
     </div>
     </ThemeContext>
     </>
-    // <TestFlowFieldParticles />
   )
 }
 
