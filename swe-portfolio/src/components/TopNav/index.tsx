@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { ThemeToggle } from "../ThemeToggle";
+import { useTheme } from "../../utils/customHooks/useTheme";
 
-import domLogo from "/dom_logo_2_black.png";
+import domLogoBlack from "/dom_logo_2_black.png";
+import domLogoWhite from "/dom_logo_2_white.png";
 
 type TopNavProps = {
     sections: string[],
@@ -11,6 +13,7 @@ type TopNavProps = {
 
 export const TopNav = ({ sections, active, onNav }: TopNavProps) => {
     const [open, setOpen] = useState(false);
+    const { theme, toggleTheme } = useTheme();
     return (
       <nav 
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-4 bg-background opacity-100"
@@ -21,7 +24,7 @@ export const TopNav = ({ sections, active, onNav }: TopNavProps) => {
           }}
       >
         <span className="font-serif text-xl font-semibold text-foreground tracking-wide" style={{ fontFamily: "'Lora', serif" }}>
-          <img className="w-16" src={domLogo} />
+          <img className="w-16" src={theme === "light" ? domLogoBlack : domLogoWhite} />
         </span>
         {/* Desktop */}
         <div className="hidden md:flex gap-8">
@@ -32,7 +35,7 @@ export const TopNav = ({ sections, active, onNav }: TopNavProps) => {
               {s}
             </button>
           ))}
-          <ThemeToggle />
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
         </div>
         {/* Mobile hamburger */}
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
