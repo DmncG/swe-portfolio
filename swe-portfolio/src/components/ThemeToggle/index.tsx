@@ -16,7 +16,7 @@ export const ThemeToggle = ({ theme, toggleTheme }: ThemeToggleProps) => {
 
     return (
         <button
-          className={`w-8 h-4 ${isDark ? "bg-input-background": "bg-secondary-foreground"} rounded-full cursor-pointer flex ${theme === "light" ? "justify-start" : "justify-end"}`}
+          className={`w-8 h-4 mt-[0.0625rem] ${isDark ? "bg-input-background": "bg-secondary-foreground"} rounded-full cursor-pointer flex ${theme === "light" ? "justify-start" : "justify-end"}`}
           onClick={() => {
             toggleTheme(isDark ? 'light' : 'dark')
           }}
