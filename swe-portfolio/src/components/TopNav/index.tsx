@@ -26,7 +26,7 @@ export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) =>
           borderBottom: "1px solid rgba(120,80,40,0.1)" 
           }}
       >
-        <span className="font-serif text-xl font-semibold text-foreground tracking-wide" style={{ fontFamily: "'Lora', serif" }}>
+        <span className="font-serif text-xl font-semibold tracking-wide" style={{ fontFamily: "'Lora', serif" }}>
           <DomDot />
           <img className="w-16" src={theme === "light" ? domLogoBlack : domLogoWhite} />
         </span>

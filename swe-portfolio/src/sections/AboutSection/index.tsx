@@ -4,16 +4,16 @@ import { MdMyLocation, MdMail } from "react-icons/md";
 import profilePhoto from "/profile.jpg";
 import githubLogo from "/GitHub-Mark-64px.png"
 import linkedInLogo from "/linkedin-logo.png";
-import type { ThemeToggleProps } from "../../components/ThemeToggle";
+import { useContext } from "react";
+import { ThemeContext } from "../../components/context/ThemeContext";
+import { isDarkTheme } from "../../utils/cssUtils";
 
-type AboutSectionProps = {
-  themeConfig: ThemeToggleProps
-}
-
-export const About = ({ themeConfig }: AboutSectionProps) => {
+export const About = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.5 });
-  const { theme } = themeConfig;
+  const theme = useContext(ThemeContext);
+  const isDark = isDarkTheme(theme);
+
     return (
       <section ref={sectionRef} className="relative min-h-screen py-28 px-6 overflow-hidden">
         <div className="max-w-5xl mx-auto">
@@ -113,7 +113,7 @@ export const About = ({ themeConfig }: AboutSectionProps) => {
                   >
                     <img 
                       src={githubLogo}
-                      className={`w-[0.75rem] h-[0.75rem] ${theme === "dark" ? "invert" : ""}`}
+                      className={`w-[0.75rem] h-[0.75rem] ${isDark ? "invert" : ""}`}
                     />
                     github.com/dominic-garcia
                   </a>
@@ -172,7 +172,7 @@ export const About = ({ themeConfig }: AboutSectionProps) => {
                     scale: 1.5
                   }}
                 >
-                  <img className={`w-[1.5rem] h-[1.5rem] ${theme === "dark" ? "invert" : ""}`} src={githubLogo} />
+                  <img className={`w-[1.5rem] h-[1.5rem] ${isDark ? "invert" : ""}`} src={githubLogo} />
                 </motion.a>
                 <motion.a 
                   target="_blank"
@@ -182,7 +182,7 @@ export const About = ({ themeConfig }: AboutSectionProps) => {
                     scale: 1.5
                   }}
                 >
-                  <img className={`w-[1.5rem] h-[1.5rem] ${theme === "dark" ? "invert" : ""}` } src={linkedInLogo} />
+                  <img className={`w-[1.5rem] h-[1.5rem] ${isDark ? "invert" : ""}` } src={linkedInLogo} />
                 </motion.a>
               </div>
             </motion.div>

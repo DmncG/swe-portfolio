@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import type { SetStateAction, Dispatch } from "react";
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import type { Theme } from "../../utils/customHooks/useTheme"
+import { isDarkTheme } from "../../utils/cssUtils";
 
 export type ThemeToggleProps = {
     theme: Theme,
@@ -11,11 +12,11 @@ export type ThemeToggleProps = {
 }
 
 export const ThemeToggle = ({ theme, toggleTheme }: ThemeToggleProps) => {
-    const isDark = theme === "dark";
+    const isDark = isDarkTheme(theme);
 
     return (
         <button
-          className={`w-8 h-4 ${theme === "dark" ? "bg-input-background": "bg-secondary-foreground"} rounded-full cursor-pointer flex ${theme === "light" ? "justify-start" : "justify-end"}`}
+          className={`w-8 h-4 ${isDark ? "bg-input-background": "bg-secondary-foreground"} rounded-full cursor-pointer flex ${theme === "light" ? "justify-start" : "justify-end"}`}
           onClick={() => {
             toggleTheme(isDark ? 'light' : 'dark')
           }}

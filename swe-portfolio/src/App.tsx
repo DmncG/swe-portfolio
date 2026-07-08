@@ -23,6 +23,7 @@ import { TestParticleCurve } from './r3f/TestParticleCurve'
 import { usePageBottom } from "./utils/customHooks/usePageBottom.tsx";
 import './App.css'
 import { ComingSoon } from './sections/ComingSoonSection/index.tsx';
+import { ThemeContext } from './components/context/ThemeContext.tsx';
 
 export type ScrollOptionsProps = {
   scrollX: MotionValue<number>
@@ -64,6 +65,7 @@ function App() {
   const SECTIONS: string[] = ["Home", "Experience", "Projects", "About"]
   return isProd ? <div><ComingSoon /></div> : (
     <>
+      <ThemeContext value={themeConfig.theme}>
       <TestParticleCurve {...scrollOptions} {...themeConfig} />
       <div className="bg-transparent min-h-screen relative">
       {/* Subtle paper grain overlay */}
@@ -79,7 +81,7 @@ function App() {
       <div ref={sectionRefs[0]}><Hero /></div>
       <div ref={sectionRefs[1]}><Projects isBottom={isBottom}/></div>
       <div ref={sectionRefs[2]}><Skills isBottom={isBottom}/></div>
-      <div ref={sectionRefs[3]}><About themeConfig={themeConfig} /></div>
+      <div ref={sectionRefs[3]}><About /></div>
 
       {/* Footer */}
       <footer className="py-8 text-center border-t" style={{ borderColor: "rgba(120,80,40,0.1)" }}>
@@ -88,6 +90,7 @@ function App() {
         </p>
       </footer>
     </div>
+    </ThemeContext>
     </>
     // <TestFlowFieldParticles />
   )

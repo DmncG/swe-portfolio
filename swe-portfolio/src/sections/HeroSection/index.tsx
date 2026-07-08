@@ -1,7 +1,12 @@
 import { motion } from "motion/react"
 import { MdKeyboardArrowDown } from "react-icons/md"
+import { useContext } from "react";
+import { ThemeContext } from "../../components/context/ThemeContext";
 
 export const Hero = () => {
+  const theme = useContext(ThemeContext);
+  const isDark = theme === "dark";
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 z-10">
 
@@ -21,7 +26,7 @@ export const Hero = () => {
           style={{ fontFamily: "'Lora', serif", letterSpacing: "-0.02em"}}
         >
           <motion.span
-            className="block"
+            className={`block ${isDark ? "text-foreground" : ""}`}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
