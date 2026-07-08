@@ -11,16 +11,17 @@ export type ThemeToggleProps = {
 }
 
 export const ThemeToggle = ({ theme, toggleTheme }: ThemeToggleProps) => {
+    const isDark = theme === "dark";
 
     return (
         <button
           className={`w-8 h-4 ${theme === "dark" ? "bg-input-background": "bg-secondary-foreground"} rounded-full cursor-pointer flex ${theme === "light" ? "justify-start" : "justify-end"}`}
           onClick={() => {
-            toggleTheme(theme === 'dark' ? 'light' : 'dark')
+            toggleTheme(isDark ? 'light' : 'dark')
           }}
         >
             <motion.div
-                className="w-4 h-4 bg-accent rounded-full"
+                className={`w-4 h-4 rounded-full ${isDark ? "bg-accent" : "bg-primary"}`}
                 layout
                 transition={{
                     type: "spring",
@@ -29,7 +30,7 @@ export const ThemeToggle = ({ theme, toggleTheme }: ThemeToggleProps) => {
                 }}
             >
                 {
-                    theme === "dark" ? (
+                    isDark ? (
                         <MdOutlineDarkMode 
                   className="w-[0.75rem] h-[0.75rem] relative top-[2px] left-[2.5px]"
                 />
