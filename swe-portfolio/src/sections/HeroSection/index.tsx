@@ -44,8 +44,7 @@ export const Hero = () => {
         </h1>
 
         <motion.p
-          className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed mb-10"
-          style={{ fontFamily: "'Nunito', sans-serif" }}
+          className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed mb-10 font-sans"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.85 }}

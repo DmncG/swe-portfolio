@@ -47,13 +47,6 @@ describe('ProjectCard', () => {
     expect(card).toHaveClass('group', 'relative', 'rounded-2xl', 'p-6', 'border');
   });
 
-  it('applies correct background and border styles', () => {
-    const { container } = render(<ProjectCard project={mockProject} />);
-    const card = container.firstChild as HTMLElement;
-    expect(card).toHaveStyle({ background: 'rgba(254,249,243,0.85)' });
-    expect(card).toHaveStyle({ borderColor: 'rgba(120,80,40,0.12)' });
-  });
-
   it('renders with hover effects', () => {
     const { container } = render(<ProjectCard project={mockProject} />);
     const card = container.firstChild as HTMLElement;

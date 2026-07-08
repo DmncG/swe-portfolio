@@ -84,8 +84,7 @@ export const About = () => {
               </motion.div>
   
               <motion.div 
-                className="space-y-2 text-sm" 
-                style={{ fontFamily: "'Nunito', sans-serif" }}
+                className="space-y-2 text-sm font-sans" 
                 animate={ isInView ? {
                   opacity: 1,
                   transition: {
@@ -137,19 +136,19 @@ export const About = () => {
               <p className="text-xl text-foreground leading-relaxed font-serif">
                 I am a full-stack engineer with 7+ years of experience building user-centered experiences.
               </p>
-              <p className="text-base text-muted-foreground leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              <p className="text-base text-muted-foreground leading-relaxed font-sans">
                 I wanted to work in spaces that blended logic and creativity. Moreover, I want to provide value from the stuff that I built. Software engineering seemed like the perfect fit. I have worked on features and products used by thousands of people and led end-to-end projects while putting people at the forefront.
               </p>
               <br/>
-              <p className="text-base text-muted-foreground leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              <p className="text-base text-muted-foreground leading-relaxed font-sans">
                 When I am not coding, I like to spend my time writing, honing my photography skills, playing Badminton, building Magic the Gathering commander decks, and going to KBBQ restaurants.
               </p>
   
               {/* Highlight chips */}
               <div className="flex flex-wrap gap-3 pt-4">
                 {["Photography", "Badminton", "MTG", "Writing"].map(tag => (
-                  <span key={tag} className="text-xs px-3 py-1.5 rounded-full border"
-                    style={{ borderColor: "rgba(120,80,40,0.2)", color: "#7a6248", fontFamily: "'Nunito', sans-serif" }}>
+                  <span key={tag} className="text-xs px-3 py-1.5 rounded-full border font-sans"
+                    style={{ borderColor: "rgba(120,80,40,0.2)", color: "#7a6248" }}>
                     {tag}
                   </span>
                 ))}
@@ -157,11 +156,6 @@ export const About = () => {
   
               {/* CTA row */}
               <div className="flex flex-wrap gap-4 pt-4 justify-center">
-                {/* <a href="mailto:micksdev@gmail.com"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-primary-foreground transition-all duration-200 hover:scale-105"
-                  style={{ background: "linear-gradient(135deg, #c96d3a, #e8956d)", fontFamily: "'Nunito', sans-serif" }}>
-                  <Mail size={14} /> Say Hello
-                </a> */}
                 <motion.a 
                   href="https://github.com/DmncG"
                   target="_blank"

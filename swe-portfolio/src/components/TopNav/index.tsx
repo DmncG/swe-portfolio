@@ -42,8 +42,8 @@ export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) =>
         <div className="hidden md:flex gap-8">
           {sections.map((s, i) => (
             <button key={s} onClick={() => onNav(i)}
-              className={`text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer ${active === i ? "text-dom-dot" : "text-muted-foreground hover:text-foreground"}`}
-              style={{ fontFamily: "'Nunito', sans-serif" }}>
+              className={`text-sm font-medium font-sans tracking-wide transition-colors duration-200 cursor-pointer ${active === i ? "text-dom-dot" : "text-muted-foreground hover:text-foreground"}`}
+            >
               {s}
             </button>
           ))}

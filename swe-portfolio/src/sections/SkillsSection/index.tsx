@@ -77,8 +77,8 @@ export const Skills = ({isBottom}: skillsProps) => {
                 <div className="flex flex-wrap gap-2 ml-2">
                   {group.skills.map(skill => (
                     <span key={skill}
-                      className="px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 cursor-default"
-                      style={{ background: group.bg, color: group.color, fontFamily: "'Nunito', sans-serif" }}>
+                      className="px-3 py-1.5 rounded-lg text-sm font-medium font-sans transition-all duration-200 hover:scale-105 cursor-default"
+                      style={{ background: group.bg, color: group.color }}>
                       {skill}
                     </span>
                   ))}
@@ -101,7 +101,7 @@ export const Skills = ({isBottom}: skillsProps) => {
               ].map(({ name, pct, color }) => (
                 <div key={name}>
                   <div className="flex justify-between mb-1.5">
-                    <span className="text-sm text-primary" style={{ fontFamily: "'Nunito', sans-serif" }}>{name}</span>
+                    <span className="text-sm text-primary font-sans">{name}</span>
                     <span className="text-xs text-muted-foreground" style={{ fontFamily: "'DM Mono', monospace" }}>{pct}%</span>
                   </div>
                   <div className="h-2 rounded-full overflow-hidden" style={{ background: "rgba(120,80,40,0.1)" }}>

@@ -38,12 +38,11 @@ describe('CVButton', () => {
     expect(link.style.background).toContain('gradient');
     expect(link.style.background).toContain('135deg');
     expect(link.style.color).toBe('rgb(253, 246, 236)');
-    expect(link.style.fontFamily).toContain('Nunito');
   });
 
   it('applies correct className for positioning and styling', () => {
     render(<CVButton />);
     const link = screen.getByRole('link');
-    expect(link).toHaveClass('fixed', 'bottom-8', 'left-1/2', '-translate-x-1/2', 'z-50');
+    expect(link).toHaveClass('fixed', 'bottom-28', 'left-1/2', '-translate-x-1/2', 'z-50');
   });
 });

@@ -29,7 +29,7 @@ describe('NavDots', () => {
     render(<NavDots active={1} sections={sections} onNav={onNav} />);
 
     const buttons = screen.getAllByRole('button');
-    expect(buttons[1]).toHaveClass('bg-primary', 'border-primary', 'scale-125');
+    expect(buttons[1]).toHaveClass('bg-slide-button-accent', 'border-slide-button-accent', 'scale-125');
   });
 
   it('applies inactive styling to inactive buttons', () => {
