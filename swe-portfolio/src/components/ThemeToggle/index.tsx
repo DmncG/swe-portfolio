@@ -22,7 +22,7 @@ export const ThemeToggle = ({ theme, toggleTheme }: ThemeToggleProps) => {
           }}
         >
             <motion.div
-                className={`w-4 h-4 rounded-full ${isDark ? "bg-accent" : "bg-primary"}`}
+                className={`w-4 h-4 rounded-full bg-slide-button-accent`}
                 layout
                 transition={{
                     type: "spring",

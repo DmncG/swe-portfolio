@@ -34,8 +34,7 @@ export const Hero = () => {
             Dominic
           </motion.span>
           <motion.span
-            className="block italic"
-            style={{ color: "#c96d3a" }}
+            className="block italic text-primary"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.55 }}
