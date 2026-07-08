@@ -19,17 +19,23 @@ export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) =>
     const { theme, toggleTheme } = themeConfig;
     return (
       <nav 
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-4 bg-background opacity-100"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-2 bg-background opacity-100"
         style={{ 
           // background: "rgba(253,246,236,0.82)", 
           backdropFilter: "blur(16px)", 
           borderBottom: "1px solid rgba(120,80,40,0.1)" 
           }}
       >
-        <span className="font-serif text-xl font-semibold tracking-wide" style={{ fontFamily: "'Lora', serif" }}>
-          <DomDot />
-          <img className="w-16" src={theme === "light" ? domLogoBlack : domLogoWhite} />
-        </span>
+          <a 
+            href="/#"
+          >
+            <span 
+              className="font-serif font-semibold tracking-wide"
+            >
+              <DomDot />
+              <img className="w-12" src={theme === "light" ? domLogoBlack : domLogoWhite} />
+            </span>
+          </a>
         {/* Desktop */}
         <div className="hidden md:flex gap-8">
           {sections.map((s, i) => (
