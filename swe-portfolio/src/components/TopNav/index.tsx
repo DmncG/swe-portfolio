@@ -1,20 +1,22 @@
 import { useState } from "react";
 import { ThemeToggle } from "../ThemeToggle";
-import { useTheme } from "../../utils/customHooks/useTheme";
 import { DomDot } from "../DomDot";
 
 import domLogoBlack from "/dom_logo_2_black.png";
 import domLogoWhite from "/dom_logo_2_white.png";
 
+import type { ThemeToggleProps } from "../ThemeToggle";
+
 type TopNavProps = {
     sections: string[],
     active: number,
     onNav:  (i: number) => void,
+    themeConfig: ThemeToggleProps
 }
 
-export const TopNav = ({ sections, active, onNav }: TopNavProps) => {
+export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) => {
     const [open, setOpen] = useState(false);
-    const { theme, toggleTheme } = useTheme();
+    const { theme, toggleTheme } = themeConfig;
     return (
       <nav 
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-4 bg-background opacity-100"

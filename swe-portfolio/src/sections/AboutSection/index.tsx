@@ -1,11 +1,19 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
+import { MdMyLocation, MdMail } from "react-icons/md";
 import profilePhoto from "/profile.jpg";
+import githubLogo from "/GitHub-Mark-64px.png"
+import linkedInLogo from "/linkedin-logo.png";
+import type { ThemeToggleProps } from "../../components/ThemeToggle";
 
-export const About = () => {
+type AboutSectionProps = {
+  themeConfig: ThemeToggleProps
+}
+
+export const About = ({ themeConfig }: AboutSectionProps) => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.5 });
-
+  const { theme } = themeConfig;
     return (
       <section ref={sectionRef} className="relative min-h-screen py-28 px-6 overflow-hidden">
         <div className="max-w-5xl mx-auto">
@@ -90,16 +98,25 @@ export const About = () => {
                 initial={{ opacity: 0}}
               >
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  {/* <MapPin size={14} className="text-primary shrink-0" /> */}
+                  <MdMyLocation size={14} className="text-primary shrink-0" />
                   <span>Melbourne, Australia</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  {/* <Mail size={14} className="text-primary shrink-0" /> */}
-                  <a href="mailto:alex@example.com" className="hover:text-foreground transition-colors">micksdev@gmail.com</a>
+                  <MdMail size={14} className="text-primary shrink-0" />
+                  <a href="mailto:micksdev@gmail.com" className="hover:text-foreground transition-colors">micksdev@gmail.com</a>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  {/* <Github size={14} className="text-primary shrink-0" /> */}
-                  <a href="#" className="hover:text-foreground transition-colors">github.com/dominic-garcia</a>
+                  <a 
+                    href="https://github.com/DmncG" 
+                    target="_blank" 
+                    className="hover:text-foreground transition-colors flex row items-center gap-2"
+                  >
+                    <img 
+                      src={githubLogo}
+                      className={`w-[0.75rem] h-[0.75rem] ${theme === "dark" ? "invert" : ""}`}
+                    />
+                    github.com/dominic-garcia
+                  </a>
                 </div>
               </motion.div>
             </div>
@@ -123,7 +140,7 @@ export const About = () => {
                 I am a full-stack engineer with 7+ years of experience building user-centered experiences.
               </p>
               <p className="text-base text-muted-foreground leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                I wanted to work on spaces that blended logic and creativity and provide value from the stuff that I built. Software engineering seemed like the perfect fit. I have worked on features and products used by thousands of people and led end-to-end projects, while putting people at the forefront.
+                I wanted to work on spaces that blended logic and creativity. Moreover, I want to provide value from the stuff that I built. Software engineering seemed like the perfect fit. I have worked on features and products used by thousands of people and led end-to-end projects while putting people at the forefront.
               </p>
               <br/>
               <p className="text-base text-muted-foreground leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
@@ -141,17 +158,32 @@ export const About = () => {
               </div>
   
               {/* CTA row */}
-              <div className="flex flex-wrap gap-4 pt-4">
-                <a href="mailto:micksdev@gmail.com"
+              <div className="flex flex-wrap gap-4 pt-4 justify-center">
+                {/* <a href="mailto:micksdev@gmail.com"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-primary-foreground transition-all duration-200 hover:scale-105"
                   style={{ background: "linear-gradient(135deg, #c96d3a, #e8956d)", fontFamily: "'Nunito', sans-serif" }}>
-                  {/* <Mail size={14} /> Say Hello */}
-                </a>
-                <a href="#"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 hover:bg-muted"
-                  style={{ borderColor: "rgba(120,80,40,0.25)", color: "#3b2b1a", fontFamily: "'Nunito', sans-serif" }}>
-                  {/* <Github size={14} /> GitHub */}
-                </a>
+                  <Mail size={14} /> Say Hello
+                </a> */}
+                <motion.a 
+                  href="https://github.com/DmncG"
+                  target="_blank"
+                  className="inline-flex items-center gap-4"
+                  whileHover={{
+                    scale: 1.5
+                  }}
+                >
+                  <img className={`w-[1.5rem] h-[1.5rem] ${theme === "dark" ? "invert" : ""}`} src={githubLogo} />
+                </motion.a>
+                <motion.a 
+                  target="_blank"
+                  href="https://www.linkedin.com/in/dominic-rb-garcia/"
+                  className="inline-flex items-center gap-4"
+                  whileHover={{
+                    scale: 1.5
+                  }}
+                >
+                  <img className={`w-[1.5rem] h-[1.5rem] ${theme === "dark" ? "invert" : ""}` } src={linkedInLogo} />
+                </motion.a>
               </div>
             </motion.div>
           </div>

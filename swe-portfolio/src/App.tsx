@@ -4,24 +4,25 @@ import {
   useEffect 
 } from 'react'
 
+import { useScroll } from "motion/react";
+import type { MotionValue } from "motion/react";
+
 import { Hero } from "./sections/HeroSection";
 import { About } from "./sections/AboutSection";
 import { Projects } from "./sections/ProjectsSection";
 import { Skills } from "./sections/SkillsSection";
 
-import { NavDots } from './components/NavDots';
-import { TopNav } from './components/TopNav';
-import { CVButton } from './components/CVButton';
+import { NavDots } from "./components/NavDots";
+import { TopNav } from "./components/TopNav";
+import { CVButton } from "./components/CVButton";
+import { useTheme } from "./utils/customHooks/useTheme.tsx";
 
-// import { TestCurve } from './r3f/TestCurve'
 import { TestParticleCurve } from './r3f/TestParticleCurve'
 // import { TestFlowFieldParticles } from './r3f/FlowFieldParticles'
 
 import { usePageBottom } from "./utils/customHooks/usePageBottom.tsx";
 import './App.css'
 import { ComingSoon } from './sections/ComingSoonSection/index.tsx';
-import { useScroll } from "motion/react";
-import type { MotionValue } from "motion/react";
 
 export type ScrollOptionsProps = {
   scrollX: MotionValue<number>
@@ -35,6 +36,7 @@ function App() {
   const [isProd] = useState(import.meta.env.PROD);
   const isBottom = usePageBottom();
   const scrollOptions: ScrollOptionsProps = useScroll();
+  const themeConfig = useTheme();
 
   const sectionRefs = [
     useRef<HTMLDivElement>(null),
@@ -72,14 +74,14 @@ function App() {
           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
         }} /> */}
 
-      <TopNav sections={SECTIONS} active={active} onNav={scrollTo} />
+      <TopNav sections={SECTIONS} active={active} onNav={scrollTo} themeConfig={themeConfig} />
       <NavDots active={active} sections={SECTIONS} onNav={scrollTo} />
       <CVButton />
 
       <div ref={sectionRefs[0]}><Hero /></div>
       <div ref={sectionRefs[1]}><Projects isBottom={isBottom}/></div>
       <div ref={sectionRefs[2]}><Skills isBottom={isBottom}/></div>
-      <div ref={sectionRefs[3]}><About /></div>
+      <div ref={sectionRefs[3]}><About themeConfig={themeConfig} /></div>
 
       {/* Footer */}
       <footer className="py-8 text-center border-t" style={{ borderColor: "rgba(120,80,40,0.1)" }}>
