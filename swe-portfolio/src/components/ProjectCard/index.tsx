@@ -5,12 +5,10 @@ export const ProjectCard = ({ project }: { project: Project }) => {
     return (
       <div 
         className="group relative rounded-2xl p-6 bg-glass backdrop-blur-md border border-white/25 shadow-xl rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl overflow-hidden"
-        // style={{ background: "rgba(254,249,243,0.85)", borderColor: "rgba(120,80,40,0.12)", backdropFilter: "blur(4px)" }}
       >
         <div className="flex items-start justify-between mb-3">
           <span className="text-xs text-muted-foreground" style={{ fontFamily: "'DM Mono', monospace" }}>{project.year}</span>
           <a href={project.link} className="text-muted-foreground hover:text-primary transition-colors">
-            {/* {<ExternalLink size={15} />} */}
           </a>
         </div>
         <h3 className="text-xl font-semibold text-foreground mb-2" style={{ fontFamily: "'Lora', serif" }}>{project.name}</h3>

@@ -43,6 +43,8 @@
   --button-primary: linear-gradient(135deg, #c96d3a, #e8956d);
   --slide-button-accent: #d15b06;
   --glass: rgba(255, 255, 255, 0.15);
+  --font-serif: 'Lora', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-sans: 'Nunito', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 .dark {
@@ -126,6 +128,8 @@
   --color-dom-dot: var(--dom-dot);
   --color-slide-button-accent: var(--slide-button-accent);
   --color-glass: var(--glass);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
 }
 
 @layer base {

@@ -132,19 +132,22 @@ const letter = {
                     )}
                   </div>
                   <div className={`pb-10 ${i === experienceList.length - 1 ? "pb-0" : ""}`}>
-                    <motion.div animate={ expInView ? { opacity: 1, transition: { delay: i + 0.5 }} : { opacity: 0 }} className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+                    <motion.div animate={ expInView ? { opacity: 1, transition: { delay: i + 0.5 }} : { opacity: 0 }} className="flex flex-wrap items-baseline content-between gap-x-3 gap-y-1">
                       <h4 
-                        className="text-lg font-semibold text-foreground"
-                        style={{ fontFamily: "'Lora', serif" }}
+                        className="text-md font-semibold text-foreground font-serif"
                       >
                       {e.role}
                       </h4>
-                      <span className="text-sm text-primary font-medium" style={{ fontFamily: "'Nunito', sans-serif" }}>{e.company}</span>
                       <span className="text-xs text-muted-foreground ml-auto" style={{ fontFamily: "'DM Mono', monospace" }}>{e.period}</span>
                     </motion.div>
+                    <motion.span 
+                      className="text-md text-primary font-medium flex flex-start font-sans mb-2"
+                      animate={ expInView ? { opacity: 1, transition: { delay: i + 0.5 }} : { opacity: 0 }}
+                    >
+                      {e.company}
+                    </motion.span>
                     <motion.p 
-                      className="text-sm text-left text-muted-foreground leading-relaxed" 
-                      style={{ fontFamily: "'Nunito', sans-serif" }}
+                      className="text-sm text-left text-muted-foreground leading-relaxed font-sans" 
                       variants={sentence}
                       animate={expInView || isBottom ? "visible" : "hidden"}
                     >
