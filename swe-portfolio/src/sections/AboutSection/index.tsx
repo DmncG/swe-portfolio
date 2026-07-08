@@ -120,18 +120,19 @@ export const About = () => {
             >
               <p className="text-xl text-foreground leading-relaxed"
                 style={{ fontFamily: "'Lora', serif" }}>
-                I am a full-stack engineer with 5+ years of experience building products that people actually enjoy using.
+                I am a full-stack engineer with 7+ years of experience building user-centered experiences.
               </p>
               <p className="text-base text-muted-foreground leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                My path into software started through digital art and interaction design, which means I care as much about how something looks and feels as how it functions underneath. I have shipped apps used by tens of thousands of people, led front-end teams, and contributed to open-source tooling.
+                I wanted to work on spaces that blended logic and creativity and provide value from the stuff that I built. Software engineering seemed like the perfect fit. I have worked on features and products used by thousands of people and led end-to-end projects, while putting people at the forefront.
               </p>
+              <br/>
               <p className="text-base text-muted-foreground leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                When I am not coding, I spend time in the darkroom printing analogue photographs, hiking the Müggelsee trails, and reading about the history of typography. I believe that constraints breed creativity, and that the best software is built when engineers understand the humans using it.
+                When I am not coding, I like to spend my time writing, honing my photography skills, playing Badminton, building Magic the Gathering commander decks, and going to KBBQ restaurants.
               </p>
   
               {/* Highlight chips */}
               <div className="flex flex-wrap gap-3 pt-2">
-                {["Open source contributor", "Speaker @ JSConf Berlin 2023", "Photography", "Analogue film"].map(tag => (
+                {["Photography", "Badminton", "MTG", "Writing"].map(tag => (
                   <span key={tag} className="text-xs px-3 py-1.5 rounded-full border"
                     style={{ borderColor: "rgba(120,80,40,0.2)", color: "#7a6248", fontFamily: "'Nunito', sans-serif" }}>
                     {tag}
