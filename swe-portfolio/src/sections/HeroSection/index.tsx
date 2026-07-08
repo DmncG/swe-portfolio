@@ -22,8 +22,8 @@ export const Hero = () => {
         </motion.p>
 
         <h1
-          className="text-6xl md:text-8xl font-bold text-foreground leading-none mb-6"
-          style={{ fontFamily: "'Lora', serif", letterSpacing: "-0.02em"}}
+          className="text-6xl md:text-8xl font-bold text-foreground leading-none mb-6 font-serif"
+          style={{ letterSpacing: "-0.02em"}}
         >
           <motion.span
             className={`block ${isDark ? "text-foreground" : ""}`}

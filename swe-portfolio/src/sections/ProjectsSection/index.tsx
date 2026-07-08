@@ -58,8 +58,7 @@ const letter = {
               Selected work
             </motion.p>
             <motion.h2 
-              className="text-5xl md:text-6xl font-bold text-foreground" 
-              style={{ fontFamily: "'Lora', serif" }}
+              className="text-5xl md:text-6xl font-bold text-foreground font-serif" 
               animate={ projectsInView|| isBottom ? {
                 opacity: 1,
                 x: 0,

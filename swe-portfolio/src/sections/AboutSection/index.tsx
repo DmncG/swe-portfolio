@@ -38,8 +38,7 @@ export const About = () => {
                 The human behind the screen
             </motion.p>
             <motion.h2 
-              className="text-5xl md:text-6xl font-bold text-foreground" 
-              style={{ fontFamily: "'Lora', serif" }}
+              className="text-5xl md:text-6xl font-bold text-foreground font-serif" 
               animate={ isInView ? { 
                 opacity: 1,
                 x: 0,
@@ -135,8 +134,7 @@ export const About = () => {
                }}
                initial={{opacity: 0}}
             >
-              <p className="text-xl text-foreground leading-relaxed"
-                style={{ fontFamily: "'Lora', serif" }}>
+              <p className="text-xl text-foreground leading-relaxed font-serif">
                 I am a full-stack engineer with 7+ years of experience building user-centered experiences.
               </p>
               <p className="text-base text-muted-foreground leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>

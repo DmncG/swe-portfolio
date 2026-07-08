@@ -11,8 +11,8 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           <a href={project.link} className="text-muted-foreground hover:text-primary transition-colors">
           </a>
         </div>
-        <h3 className="text-xl font-semibold text-foreground mb-2" style={{ fontFamily: "'Lora', serif" }}>{project.name}</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>{project.description}</p>
+        <h3 className="text-xl font-semibold text-foreground mb-2 font-serif">{project.name}</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-4 font-sans">{project.description}</p>
         <div className="flex flex-wrap gap-2 pt-4">
           {project.tags.map(t => (
             <span key={t} className="text-xs px-2.5 py-1 rounded-full font-medium"

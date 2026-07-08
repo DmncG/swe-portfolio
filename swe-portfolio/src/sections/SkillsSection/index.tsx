@@ -34,8 +34,7 @@ export const Skills = ({isBottom}: skillsProps) => {
               What I work with
             </motion.p>
             <motion.h2 
-              className="text-5xl md:text-6xl font-bold text-foreground"
-              style={{ fontFamily: "'Lora', serif" }}
+              className="text-5xl md:text-6xl font-bold text-foreground font-serif"
               animate={ skillGroupInView || isBottom ? {
                 opacity: 1,
                 x: 0,
