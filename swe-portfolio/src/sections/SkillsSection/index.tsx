@@ -95,10 +95,10 @@ export const Skills = ({isBottom}: skillsProps) => {
               style={{ fontFamily: "'DM Mono', monospace" }}>Proficiency highlights</p>
             <div ref={proficiencyRef} className="space-y-4">
               {[
-                { name: "React / Next.js", pct: 95, color: "#c96d3a" },
+                { name: "ReactJS", pct: 95, color: "#c96d3a" },
                 { name: "TypeScript", pct: 90, color: "#78b4c8" },
-                { name: "Node.js / APIs", pct: 88, color: "#c6a23a" },
-                { name: "Python", pct: 75, color: "#8d7cc9" },
+                { name: "DynamoDB", pct: 85, color: "#c6a23a" },
+                { name: "Claude", pct: 67, color: "#8d7cc9" },
               ].map(({ name, pct, color }) => (
                 <div key={name}>
                   <div className="flex justify-between mb-1.5">

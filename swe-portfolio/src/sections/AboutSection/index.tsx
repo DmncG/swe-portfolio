@@ -140,7 +140,7 @@ export const About = () => {
                 I am a full-stack engineer with 7+ years of experience building user-centered experiences.
               </p>
               <p className="text-base text-muted-foreground leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                I wanted to work on spaces that blended logic and creativity. Moreover, I want to provide value from the stuff that I built. Software engineering seemed like the perfect fit. I have worked on features and products used by thousands of people and led end-to-end projects while putting people at the forefront.
+                I wanted to work in spaces that blended logic and creativity. Moreover, I want to provide value from the stuff that I built. Software engineering seemed like the perfect fit. I have worked on features and products used by thousands of people and led end-to-end projects while putting people at the forefront.
               </p>
               <br/>
               <p className="text-base text-muted-foreground leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
