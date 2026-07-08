@@ -1,4 +1,5 @@
 import { motion } from "motion/react"
+import { MdKeyboardArrowDown } from "react-icons/md"
 
 export const Hero = () => {
   return (
@@ -76,6 +77,7 @@ export const Hero = () => {
         transition={{ duration: 0.6, delay: 1.5 }}
       >
         <span className="text-xs tracking-widest uppercase" style={{ fontFamily: "'DM Mono', monospace" }}>Scroll</span>
+        <MdKeyboardArrowDown />
       </motion.div>
     </section>
   )
