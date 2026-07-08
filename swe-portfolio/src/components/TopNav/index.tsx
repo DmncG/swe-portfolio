@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ThemeToggle } from "../ThemeToggle";
 import { useTheme } from "../../utils/customHooks/useTheme";
+import { DomDot } from "../DomDot";
 
 import domLogoBlack from "/dom_logo_2_black.png";
 import domLogoWhite from "/dom_logo_2_white.png";
@@ -24,6 +25,7 @@ export const TopNav = ({ sections, active, onNav }: TopNavProps) => {
           }}
       >
         <span className="font-serif text-xl font-semibold text-foreground tracking-wide" style={{ fontFamily: "'Lora', serif" }}>
+          <DomDot />
           <img className="w-16" src={theme === "light" ? domLogoBlack : domLogoWhite} />
         </span>
         {/* Desktop */}
