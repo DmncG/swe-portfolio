@@ -98,11 +98,11 @@ export const About = () => {
                 initial={{ opacity: 0}}
               >
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <MdMyLocation size={14} className="text-primary shrink-0" />
+                  <MdMyLocation size={14} className="text-black shrink-0" />
                   <span>Melbourne, Australia</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <MdMail size={14} className="text-primary shrink-0" />
+                  <MdMail size={14} className="text-black shrink-0" />
                   <a href="mailto:micksdev@gmail.com" className="hover:text-foreground transition-colors">micksdev@gmail.com</a>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
@@ -148,7 +148,7 @@ export const About = () => {
               </p>
   
               {/* Highlight chips */}
-              <div className="flex flex-wrap gap-3 pt-2">
+              <div className="flex flex-wrap gap-3 pt-4">
                 {["Photography", "Badminton", "MTG", "Writing"].map(tag => (
                   <span key={tag} className="text-xs px-3 py-1.5 rounded-full border"
                     style={{ borderColor: "rgba(120,80,40,0.2)", color: "#7a6248", fontFamily: "'Nunito', sans-serif" }}>

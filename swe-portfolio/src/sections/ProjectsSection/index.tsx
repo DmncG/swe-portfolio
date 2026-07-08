@@ -113,7 +113,7 @@ const letter = {
             >
               Work history
             </motion.p>
-            <div className="space-y-0 mt-16">
+            <div className="space-y-0 mt-16 p-4 bg-glass backdrop-blur-md border border-white/25 shadow-xl rounded-xl">
               {experienceList.map((e, i) => (
                 <div ref={experienceRef} key={e.company} className="flex gap-6 group">
                   {/* Timeline line */}

@@ -55,8 +55,7 @@ export const Skills = ({isBottom}: skillsProps) => {
             {skillList.map((group, i) => (
               <motion.div 
                 key={group.category} 
-                className="rounded-2xl p-7 border relative overflow-hidden transition-all duration-300 hover:shadow-lg"
-                style={{ background: "rgba(254,249,243,0.9)", borderColor: "rgba(120,80,40,0.1)" }}
+                className="bg-glass backdrop-blur-md border border-white/25 shadow-xl rounded-xl p-7 relative overflow-hidden transition-all duration-300 hover:shadow-lg"
                 animate={skillGroupInView || isBottom ? { 
                   opacity: 1, 
                   transition: {
@@ -90,8 +89,8 @@ export const Skills = ({isBottom}: skillsProps) => {
           </div>
   
           {/* Proficiency meter strip */}
-          <div className="mt-14 rounded-2xl p-7 border"
-            style={{ background: "rgba(254,249,243,0.9)", borderColor: "rgba(120,80,40,0.1)" }}>
+          <div className="mt-14 bg-glass backdrop-blur-md border border-white/25 shadow-xl rounded-xl p-7"
+          >
             <p className="text-xs tracking-[0.25em] uppercase font-semibold mb-6 text-primary"
               style={{ fontFamily: "'DM Mono', monospace" }}>Proficiency highlights</p>
             <div ref={proficiencyRef} className="space-y-4">
@@ -103,7 +102,7 @@ export const Skills = ({isBottom}: skillsProps) => {
               ].map(({ name, pct, color }) => (
                 <div key={name}>
                   <div className="flex justify-between mb-1.5">
-                    <span className="text-sm text-foreground" style={{ fontFamily: "'Nunito', sans-serif" }}>{name}</span>
+                    <span className="text-sm text-primary" style={{ fontFamily: "'Nunito', sans-serif" }}>{name}</span>
                     <span className="text-xs text-muted-foreground" style={{ fontFamily: "'DM Mono', monospace" }}>{pct}%</span>
                   </div>
                   <div className="h-2 rounded-full overflow-hidden" style={{ background: "rgba(120,80,40,0.1)" }}>
