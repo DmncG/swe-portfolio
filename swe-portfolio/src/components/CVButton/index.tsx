@@ -1,7 +1,7 @@
 export const CVButton = () => {
     return (
         <a
-          href="/CV_Dominic_Garcia-22-6-26.pdf"
+          href="/CV_Dominic_Garcia-8-7-26.pdf"
           download
           className="fixed bottom-28 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
           style={{

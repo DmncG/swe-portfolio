@@ -12,7 +12,7 @@ describe('CVButton', () => {
   it('has correct href attribute', () => {
     render(<CVButton />);
     const link = screen.getByRole('link') as HTMLAnchorElement;
-    expect(link.href).toContain('CV_Dominic_Garcia-22-6-26.pdf');
+    expect(link.href).toContain('CV_Dominic_Garcia-8-7-26.pdf');
   });
 
   it('has download attribute', () => {
