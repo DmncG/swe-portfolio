@@ -1,7 +1,8 @@
 import { useRef, useMemo, type RefObject } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Center } from '@react-three/drei'
-import { EffectComposer, Bloom } from '@react-three/postprocessing'
+import { EffectComposer, Bloom, Noise } from '@react-three/postprocessing'
+import { BlendFunction } from 'postprocessing'
 import { Leva, useControls, folder } from "leva";
 import * as THREE from 'three'
 import type { ScrollOptionsProps } from '../../App';
@@ -246,16 +247,17 @@ export const TestParticleCurve = ({ scrollYProgress, theme }: ParticleCurveProps
           />
         </Center>
 
-        {isDark && (
-          <EffectComposer>
+        <EffectComposer>
+          {isDark ? (
             <Bloom
               intensity={intensity_value}
               luminanceThreshold={luminance_threshold}
               luminanceSmoothing={luminance_smoothing}
               mipmapBlur
             />
-          </EffectComposer>
-        )}
+          ) : <></>}
+          <Noise premultiply blendFunction={BlendFunction.OVERLAY} opacity={0.75} />
+        </EffectComposer>
       </Canvas>
       <Leva flat oneLineLabels collapsed={false} hidden={true} />
     </div>

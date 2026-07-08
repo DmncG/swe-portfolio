@@ -68,12 +68,6 @@ function App() {
       <ThemeContext value={themeConfig.theme}>
       <TestParticleCurve {...scrollOptions} {...themeConfig} />
       <div className="bg-transparent min-h-screen relative">
-      {/* Subtle paper grain overlay */}
-      {/* <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
-        }} /> */}
-
       <TopNav sections={SECTIONS} active={active} onNav={scrollTo} themeConfig={themeConfig} />
       <NavDots active={active} sections={SECTIONS} onNav={scrollTo} />
       <CVButton />
