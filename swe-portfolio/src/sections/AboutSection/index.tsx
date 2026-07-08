@@ -10,7 +10,7 @@ import { isDarkTheme } from "../../utils/cssUtils";
 
 export const About = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.5 });
+  const isInView = useInView(sectionRef, { once: true, amount: "some" });
   const theme = useContext(ThemeContext);
   const isDark = isDarkTheme(theme);
 
