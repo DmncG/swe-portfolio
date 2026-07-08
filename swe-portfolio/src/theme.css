@@ -42,6 +42,7 @@
   --dom-dot: #d15b06;
   --button-primary: linear-gradient(135deg, #c96d3a, #e8956d);
   --slide-button-accent: #d15b06;
+  --glass: rgba(255, 255, 255, 0.15);
 }
 
 .dark {
@@ -80,6 +81,7 @@
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
   --slide-button-accent: #aa3bff;
+  --glass: rgba(255, 255, 255, 0.15);
 }
 
 @theme inline {
@@ -123,6 +125,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-dom-dot: var(--dom-dot);
   --color-slide-button-accent: var(--slide-button-accent);
+  --color-glass: var(--glass);
 }
 
 @layer base {
