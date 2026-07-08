@@ -62,7 +62,7 @@ function App() {
     sectionRefs[i].current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const SECTIONS: string[] = ["Home", "Experience", "Projects", "About"]
+  const SECTIONS: string[] = ["Home", "Projects & Experience", "Skills", "About"]
   return isProd ? <div><ComingSoon /></div> : (
     <>
       <ThemeContext value={themeConfig.theme}>

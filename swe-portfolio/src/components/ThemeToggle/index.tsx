@@ -33,7 +33,7 @@ export const ThemeToggle = ({ theme, toggleTheme }: ThemeToggleProps) => {
                 {
                     isDark ? (
                         <MdOutlineDarkMode 
-                  className="w-[0.75rem] h-[0.75rem] relative top-[2px] left-[2.5px]"
+                  className="w-[0.75rem] h-[0.75rem] relative top-[2px] left-[2.5px] text-primary"
                 />
                     ) : (
                         <MdOutlineLightMode 

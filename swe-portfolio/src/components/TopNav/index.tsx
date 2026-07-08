@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "motion/react";
+import { MdMenu, MdClose } from "react-icons/md";
 import { ThemeToggle } from "../ThemeToggle";
 import { DomDot } from "../DomDot";
 
@@ -48,19 +50,37 @@ export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) =>
           <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
         </div>
         {/* Mobile hamburger */}
-        <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
-          {/* {open ? <X size={22} /> : <Menu size={22} />} */}
+        <button className="md:hidden text-foreground cursor-pointer" onClick={() => setOpen(!open)}>
+          {open ? (
+            <motion.div
+              whileHover={{
+                scale: 1.5
+              }}
+            >
+              <MdClose />
+            </motion.div>
+            ) : (
+            <motion.div
+              whileHover={{
+                scale: 1.5
+              }}
+            >
+              <MdMenu />
+            </motion.div>
+          )}
         </button>
         {open && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-card border-b border-border flex flex-col py-4 px-8 gap-4">
-            {sections.map((s, i) => (
-              <button key={s} onClick={() => { onNav(i); setOpen(false); }}
-                className={`text-left text-sm font-medium ${active === i ? "text-primary" : "text-muted-foreground"}`}
-                style={{ fontFamily: "'Nunito', sans-serif" }}>
-                {s}
-              </button>
+            {sections.map((section, i) => (
+              <motion.button 
+                key={section} 
+                onClick={() => { onNav(i); setOpen(false); }}
+                className={`text-left text-sm font-medium cursor-pointer hover:text-dom-dot ${active === i ? "text-primary" : "text-muted-foreground"}`}
+              >
+                {section}
+              </motion.button>
             ))}
-            {/* <ThemeToggle /> */}
+            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
         )}
       </nav>

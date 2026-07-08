@@ -47,7 +47,7 @@ export const Skills = ({isBottom}: skillsProps) => {
                 x: 300
               }}
             >
-              Skills & Toolkit
+              Skills
             </motion.h2>
           </div>
   
