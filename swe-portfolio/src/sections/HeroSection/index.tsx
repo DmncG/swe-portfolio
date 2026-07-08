@@ -52,26 +52,6 @@ export const Hero = () => {
         >
           Crafting experiences where user-centered code meets elegant design. Grounded in collaboration, communication, and simplicity.
         </motion.p>
-
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-4 mt-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 1.1 }}
-        >
-          <button
-            className="px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground transition-all duration-200 hover:scale-105 cursor-pointer"
-            style={{ background: "linear-gradient(135deg, #c96d3a, #e8956d)", fontFamily: "'Nunito', sans-serif" }}
-          >
-            View My Work
-          </button>
-          <button
-            className="px-6 py-3 rounded-full text-sm font-semibold border transition-all duration-200 hover:bg-muted cursor-pointer"
-            style={{ borderColor: "rgba(120,80,40,0.25)", fontFamily: "'Nunito', sans-serif", color: "#3b2b1a" }}
-          >
-            Get in Touch
-          </button>
-        </motion.div>
       </div>
 
       <motion.div
