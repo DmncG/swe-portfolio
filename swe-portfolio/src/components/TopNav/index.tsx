@@ -74,7 +74,7 @@ export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) =>
         <AnimatePresence initial={false}>
         {open && (
           <motion.div
-            className="md:hidden absolute top-full left-0 right-0 z-40 bg-background flex flex-col py-4 px-8 gap-4"
+            className="md:hidden absolute top-full left-0 right-0 z-50 bg-background flex flex-col py-4 px-8 gap-4"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1, originX: "right", originY: "top" }}
             exit={{ opacity: 0, scale: 0 }}

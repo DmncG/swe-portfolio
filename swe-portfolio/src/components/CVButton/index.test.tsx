@@ -43,6 +43,6 @@ describe('CVButton', () => {
   it('applies correct className for positioning and styling', () => {
     render(<CVButton />);
     const link = screen.getByRole('link');
-    expect(link).toHaveClass('fixed', 'bottom-28', 'left-1/2', '-translate-x-1/2', 'z-50');
+    expect(link).toHaveClass('fixed', 'bottom-28', 'left-1/2', '-translate-x-1/2', 'z-30');
   });
 });
