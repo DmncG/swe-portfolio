@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { MdMenu, MdClose } from "react-icons/md";
 import { ThemeToggle } from "../ThemeToggle";
@@ -20,7 +21,8 @@ export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) =>
     const [open, setOpen] = useState(false);
     const { theme, toggleTheme } = themeConfig;
     return (
-      <nav 
+      <>
+      <nav
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-2 bg-background opacity-100"
         style={{ 
           // background: "rgba(253,246,236,0.82)", 
@@ -71,16 +73,16 @@ export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) =>
         </button>
         <AnimatePresence initial={false}>
         {open && (
-          <motion.div 
-            className="md:hidden absolute top-full left-0 right-0 bg-card border border-b flex flex-col py-4 px-8 gap-4"
+          <motion.div
+            className="md:hidden absolute top-full left-0 right-0 z-40 bg-background flex flex-col py-4 px-8 gap-4"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1, originX: "right", originY: "top" }}
             exit={{ opacity: 0, scale: 0 }}
             key="box"
           >
             {sections.map((section, i) => (
-              <motion.button 
-                key={section} 
+              <motion.button
+                key={section}
                 onClick={() => { onNav(i); setOpen(false); }}
                 className={`text-left text-sm font-medium cursor-pointer hover:text-dom-dot ${active === i ? "text-primary" : "text-muted-foreground"}`}
               >
@@ -92,5 +94,20 @@ export const TopNav = ({ sections, active, onNav, themeConfig }: TopNavProps) =>
         )}
         </AnimatePresence>
       </nav>
+      {createPortal(
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              className="md:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setOpen(false)}
+            />
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+    </>
     );
   }
