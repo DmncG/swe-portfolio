@@ -6,6 +6,7 @@ declare global {
 
 export function initGA() {
   const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID
+  console.log("env", measurementId)
   if (!measurementId) return
 
   const script = document.createElement('script')
