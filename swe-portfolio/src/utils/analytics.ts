@@ -1,6 +1,9 @@
 declare global {
   interface Window {
-    dataLayer: unknown[]
+    dataLayer: unknown[];
+    // Use an explicit Arguments type match or any[] here for exact GA compatibility
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    gtag: (...args: any[]) => void; 
   }
 }
 
@@ -14,9 +17,13 @@ export function initGA() {
   document.head.appendChild(script)
 
   window.dataLayer = window.dataLayer || []
-  function gtag(...args: unknown[]) {
-    window.dataLayer.push(args)
+  
+  // Use the native 'arguments' object to preserve Google's array flattening structure
+  window.gtag = function() {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer.push(arguments) 
   }
-  gtag('js', new Date())
-  gtag('config', measurementId)
+
+  window.gtag('js', new Date())
+  window.gtag('config', measurementId)
 }
